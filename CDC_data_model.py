@@ -1,9 +1,22 @@
 from sqlalchemy.orm import Mapped, mapped_column, sessionmaker, DeclarativeBase
-from sqlalchemy import String, Float
+from sqlalchemy import String, Float, create_engine, text
 from typing import Optional
+from dotenv import load_dotenv
+import os 
+
+load_dotenv()
+
+engine = create_engine(os.getenv('DATABASE_URL_SCHEMA'))
+
+try:
+    with engine.connect() as con:
+        result = con.execute(text("SELECT version();"))
+        print("Connected to the Database")
+except Exception as e:
+    print('Failed to connect')
+    print(e)
 class Base(DeclarativeBase):
     pass
-
 class Diabetes_Indicator(Base):
     __tablename__ = 'diabetes_ind'
     
@@ -38,3 +51,6 @@ class Stroke_Mortality(Base):
     
     def __repr__(self) -> str:
         return f"stroke_mortality(id={self.id!r},year={self.year!r},state={self.state!r},location={self.location!r},geo_level={self.geo_level!r},rate={self.rate!r},sex={self.sex!r},race={self.race!r},fips={self.fips!r})"
+    
+
+Base.metadata.create_all(engine)
