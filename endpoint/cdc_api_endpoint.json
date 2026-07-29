@@ -1,0 +1,14 @@
+{
+    "CDC" : {
+        "Diabetes":{
+            "USDSS_ind": "73uh-igb7"
+        },
+        "Stroke": {
+            "Stroke_Mortality":{
+                "2000-2019": "7b9s-s8ck",
+                "2019-2021": "vutr-sfkh",
+                "2022-2024": "y5ii-knwc"
+            }
+        }
+    }
+}

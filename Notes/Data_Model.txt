@@ -1,4 +1,5 @@
 1. Diabetes Indicator:
+Link: https://data.cdc.gov/U-S-Diabetes-Surveillance-System/USDSS-National-Other-Diabetes-Indicators/73uh-igb7/data_preview
 
 Name            Type
 Year            Text
