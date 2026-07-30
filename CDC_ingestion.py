@@ -3,14 +3,29 @@ from pathlib import Path
 import json
 base_cdc_url = 'https://data.cdc.gov/api/v3/views'
 
+def json_length(filename:str) -> int:
+    json_path = json.load(open(filename))
+    return len(json_path)
 
-def endpoint():
+def endpoint() -> dict:
+    """
+    Opens and reads the /endpoint/cdc_api_endpoint.json, which contains list of API endpoint identifier
+    Returns:
+        dict: returns the content of the json file
+    """
     endpoint_path = Path("endpoint/cdc_api_endpoint.json")
     with endpoint_path.open(mode="r", encoding = 'utf-8') as file:
         content = file.read()
         return json.loads(content)
 
-def select_endpoint():
+
+def select_endpoint() -> str:
+    """
+    Traverses through a dictionary(specically endpoint() function) by taking user inputs until it reaches the bottom most values.
+    The bottom most value being API endpoints identifier
+    Returns:
+        str: returns the API endpoint identifier 
+    """
     current_level = endpoint()
     path = []
     
@@ -64,19 +79,68 @@ def select_endpoint():
     
     return current_level
 
-def api_connection(filter=''):
-    url = f'{base_cdc_url}/{select_endpoint()}/query.json?{filter}'
+
+def find_keys_by_value(data, target_value, current_path=None) -> list:
+    """
+    Traverse the dictionary(endpoint() function) to find the key of the targeted_value.
+    Uses Recursion since we are working with a nested dictionary, hence the current_path comes in handy.
+    
+    e.g 
+    Top_Layer(data) -> If not found -> go one level down new_path(current_path) -> start all over
+
+    Args:
+        data (dict): dictionary we are working with 
+        target_value (str): the dict value which will help us find its key
+        current_path (dict, optional): current location of the traversal. 
+
+    Returns:
+        list: returns list of keys
+    """
+    if current_path is None:
+        current_path = []
+    results = []
+    if isinstance(data, dict):
+        for key, value in data.items():
+            new_path =current_path = [key]
+            if value == target_value:
+                results.append(new_path)
+            elif isinstance(value, dict):
+                results.extend(find_keys_by_value(value, target_value, new_path))
+    return results
+
+def data_extraction(filter=''):
+    """
+    Connects to the API Endpoint of our selection(select endpoint), then extracts, then stores it in a json file. 
+    Args:
+        filter (str, optional): optional parameter to add filters to the API Endpoint
+    """
+    selected_value = select_endpoint()
+    url = f'{base_cdc_url}/{selected_value}/query.json?{filter}'
     response = requests.get(url)
+    endpoint_dict = endpoint()
+    print('Selected Value: ', selected_value)
+    paths = find_keys_by_value(endpoint_dict, selected_value)
+    
+    if paths:
+        for path in paths:
+            print(f"Key: {path[0]}")
+    else:
+        print(f"Value '{selected_value}' not found in dictionary")
     
     if response:
         print(response.status_code)
         data = response.json()
         print(type(data[0]))
+        print(len(data[0]))
+        with open(f"data/{path[0]}.json", "w") as file:
+            json.dump(data, file, indent=4, sort_keys=True)
+        #return data 
         # print(response.json())
     else:
         print(response.status_code)
         print(f"Failed to connect to the API Endpoint")
         
 
-# api_connection(base_url=base_cdc_url, endpoint=)
-print(api_connection())
+
+data = json.load(open('data/USDSS_ind.json'))
+print(len(data))
