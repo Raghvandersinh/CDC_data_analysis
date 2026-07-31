@@ -1,7 +1,9 @@
 {
     "CDC" : {
         "Diabetes":{
-            "Diabetes_USDSS_ind": "73uh-igb7"
+            "Diabetes_Indicator": {
+                "Diabetes_USDSS_ind": "73uh-igb7"
+            }
         },
         "Stroke": {
             "Stroke_Mortality":{
