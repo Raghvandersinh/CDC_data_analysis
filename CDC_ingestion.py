@@ -1,6 +1,7 @@
 import requests 
 from pathlib import Path
 import json
+import dlt
 base_cdc_url = 'https://data.cdc.gov/api/v3/views'
 
 def json_length(filename:str) -> int:
@@ -21,7 +22,7 @@ def endpoint() -> dict:
 
 def select_endpoint() -> str:
     """
-    Traverses through a dictionary(specically endpoint() function) by taking user inputs until it reaches the bottom most values.
+    Traverses through a endpoint\cdc_api_endpoint.json by taking user inputs until it reaches the bottom most values.
     The bottom most value being API endpoints identifier
     Returns:
         str: returns the API endpoint identifier 
@@ -79,6 +80,27 @@ def select_endpoint() -> str:
     
     return current_level
 
+def get_all_endpoint(res = [], d = None) -> list: 
+    """
+    Traverse through "endpoint/cdc_api_endpoint.json" and returns all the API endpoint identifiers
+
+    Args:
+        res (list, optional): keep it empty, stores our outputs.
+        d (dict, optional): Keep it None, it gets the "endpoint/cdc_api_endpoint.json" dict.
+
+    Returns:
+        list: returns list of API indentifier endpoints. 
+    """
+    if d is None:
+        d = endpoint()
+        
+    for k, v in d.items():
+        if isinstance(v, dict):
+            get_all_endpoint(d = v)
+        else:
+            res.append(v)
+    return res
+    
 
 def find_keys_by_value(data, target_value, current_path=None) -> list:
     """
@@ -114,33 +136,6 @@ def data_extraction(filter=''):
     Args:
         filter (str, optional): optional parameter to add filters to the API Endpoint
     """
-    selected_value = select_endpoint()
-    url = f'{base_cdc_url}/{selected_value}/query.json?{filter}'
-    response = requests.get(url)
-    endpoint_dict = endpoint()
-    print('Selected Value: ', selected_value)
-    paths = find_keys_by_value(endpoint_dict, selected_value)
     
-    if paths:
-        for path in paths:
-            print(f"Key: {path[0]}")
-    else:
-        print(f"Value '{selected_value}' not found in dictionary")
-    
-    if response:
-        print(response.status_code)
-        data = response.json()
-        print(type(data[0]))
-        print(len(data[0]))
-        with open(f"data/{path[0]}.json", "w") as file:
-            json.dump(data, file, indent=4, sort_keys=True)
-        #return data 
-        # print(response.json())
-    else:
-        print(response.status_code)
-        print(f"Failed to connect to the API Endpoint")
-        
 
-
-data = json.load(open('data/USDSS_ind.json'))
-print(len(data))
+print(get_all_endpoint())
