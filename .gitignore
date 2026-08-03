@@ -1,4 +1,4 @@
 .venv
 .env
 /data
-analysis/cdc_separate_indicator.duckdb
+cdc_separate_indicator.duckdb

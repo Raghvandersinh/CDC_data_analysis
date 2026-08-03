@@ -3,7 +3,7 @@ from pathlib import Path
 
 def connect_to_database():
     current_dir = Path(__file__).parent
-    analysis_dir = current_dir.parent
+    analysis_dir = current_dir.parent.parent
     db_path = analysis_dir / "cdc_separate_indicator.duckdb"
 
     # Connect to the database
