@@ -137,42 +137,32 @@ def find_keys_by_value(data = None, target_value = None, current_path=None) -> l
     return results
 
 
-def data_extraction(filter=''):
-    """
-    Connects to the API Endpoint of our selection, then extracts and stores it in DuckDB.
-    Uses pageNumber and pageSize for pagination.
-    """
+def grouped_endpoints() -> dict:
     endpoints = ''
     user_input = None
-    base_cdc_url = 'https://data.cdc.gov/api/v3/views'
     
-    # Pagination settings - confirmed working format
-    PAGE_SIZE = 10000  # Number of records per page
-    MAX_RETRIES = 3
-
-    # Get user selection
     while user_input is None: 
-        print("1. Select a endpoint")
-        print("2. All endpoints")
-        print("Type 'exit' to leave")
-        user_input = input("Select(by number): ")
-        print('\n')
+            print("1. Select a endpoint")
+            print("2. All endpoints")
+            print("Type 'exit' to leave")
+            user_input = input("Select(by number): ")
+            print('\n')
+            
+            if user_input == '1':
+                endpoint = select_endpoint()
+                endpoints = [endpoint]
+                break
+            elif user_input == '2':
+                endpoints = get_all_endpoint()
+                break
+            elif user_input.lower() == "exit":
+                return
+            else: 
+                print("Thats not an option.")
+                user_input = None
+                continue
         
-        if user_input == '1':
-            endpoint = select_endpoint()
-            endpoints = [endpoint]
-            break
-        elif user_input == '2':
-            endpoints = get_all_endpoint()
-            break
-        elif user_input.lower() == "exit":
-            return
-        else: 
-            print("Thats not an option.")
-            user_input = None
-            continue
-    
-    # Create key-value pairs
+        # Create key-value pairs
     endpoint_key_pair = []
     for i in endpoints:
         key = find_keys_by_value(target_value=i)
@@ -186,168 +176,126 @@ def data_extraction(filter=''):
             grouped_data[indicator] = []
         grouped_data[indicator].append(endpoint_id)
     
-    # Create pipeline once
+    return grouped_data
+    
+def data_extraction_streaming(filter=''):
+    """
+    Extracts 10,000 records from API, immediately inserts into DuckDB,
+    then fetches the next batch. True streaming pipeline.
+    """
+    
+    base_cdc_url = 'https://data.cdc.gov/api/v3/views'
+    PAGE_SIZE = 100000  
+    MAX_RETRIES = 3
+    BATCH_SIZE = 50000
+    
+    grouped_data = grouped_endpoints()
+    
+    # Create pipeline
     pipeline = dlt.pipeline(
         pipeline_name="cdc_separate_indicator",
         destination="duckdb",
         dataset_name="cdc_health_data"
     )
-    
-    # Process each indicator separately
+
     for indicator, endpoint_ids in grouped_data.items():
         print(f"\n{'='*60}")
         print(f"Processing: {indicator}")
-        print(f"Endpoints: {endpoint_ids}")
         print(f"{'='*60}")
         
-        # Create source for this specific indicator
-        @dlt.source
-        def indicator_source():
+        # Process each endpoint
+        for endpoint_id in endpoint_ids:
+            print(f"\nStreaming endpoint: {endpoint_id}")
             
-            @dlt.resource(
-                name=indicator.lower().replace(' ', '_'),
-                write_disposition="replace"
-            )
-            def fetch_indicator_data():
-                for endpoint_id in endpoint_ids:
-                    print(f"\n  → Fetching endpoint: {endpoint_id}")
+            page_number = 1
+            has_more = True
+            retry_count = 0
+            total_extracted = 0
+            
+            while has_more:
+                try:
+                    # ===== STEP 1: EXTRACT =====
+                    print(f" EXTRACTING: Page {page_number} from API...")
                     
-                    page_number = 1
-                    total_records = 0
-                    has_more = True
-                    retry_count = 0
+                    url = f"{base_cdc_url}/{endpoint_id}/query.json"
+                    params = {
+                        'pageNumber': page_number,
+                        'pageSize': PAGE_SIZE
+                    }
+                    if filter:
+                        params['query'] = filter
                     
-                    while has_more:
-                        try:
-                            # Build URL with working pagination format
-                            url = f"{base_cdc_url}/{endpoint_id}/query.json"
-                            
-                            # Correct pagination parameters
-                            params = {
-                                'pageNumber': page_number,
-                                'pageSize': PAGE_SIZE
-                            }
-                            
-                            # Add any filter if provided
-                            if filter:
-                                params['query'] = filter
-                            
-                            print(f"Fetching page {page_number} (pageSize: {PAGE_SIZE})")
-                            
-                            response = requests.get(url, params=params, timeout=60)
-                            response.raise_for_status()
-                            data = response.json()
-                            
-                            # Check if we got data
-                            if not data or not isinstance(data, list):
-                                print(f"No more data at page {page_number}")
-                                has_more = False
-                                break
-                            
-                            records_in_page = len(data)
-                            
-                            # If we got 0 records, we're done
-                            if records_in_page == 0:
-                                print(f"No more data")
-                                has_more = False
-                                break
-                            
-                            total_records += records_in_page
-                            
-                            # Yield each record with metadata
-                            for record in data:
-                                record['_indicator'] = indicator
-                                record['_endpoint_id'] = endpoint_id
-                                record['_page_number'] = page_number
-                                yield record
-                            
-                            print(f"Page {page_number}: {records_in_page} records (total: {total_records:,})")
-                            
-                            # If we got fewer records than page size, we're done
-                            if records_in_page < PAGE_SIZE:
-                                has_more = False
-                                print(f"Completed {endpoint_id}: {total_records:,} total records")
-                            else:
-                                page_number += 1
-                                retry_count = 0  # Reset retry count on success
-                            
-                        except requests.exceptions.Timeout:
-                            retry_count += 1
-                            if retry_count <= MAX_RETRIES:
-                                print(f"Timeout on page {page_number}, retry {retry_count}/{MAX_RETRIES}...")
-                                time.sleep(2 * retry_count)
-                            else:
-                                print(f"Max retries exceeded for page {page_number}")
-                                has_more = False
-                                yield {
-                                    '_indicator': indicator,
-                                    '_endpoint_id': endpoint_id,
-                                    '_page': page_number,
-                                    '_error': 'Max retries exceeded'
-                                }
-                            
-                        except Exception as e:
-                            print(f"Error on page {page_number}: {e}")
-                            has_more = False
-                            yield {
-                                '_indicator': indicator,
-                                '_endpoint_id': endpoint_id,
-                                '_page': page_number,
-                                '_error': str(e)
-                            }
+                    response = requests.get(url, params=params, timeout=60)
+                    response.raise_for_status()
+                    data = response.json()
+                    
+                    if not data or not isinstance(data, list) or len(data) == 0:
+                        print(f"No more data to extract")
+                        break
+                    
+                    # Enrich data with metadata
+                    for record in data:
+                        record['_indicator'] = indicator
+                        record['_endpoint_id'] = endpoint_id
+                        record['_page_number'] = page_number
+                    
+                    records_extracted = len(data)
+                    total_extracted += records_extracted
+                    print(f"EXTRACTED: {records_extracted:,} records (Total: {total_extracted:,})")
+                    
+                    # ===== STEP 2: INSERT IN BATCHES OF 10,000 =====
+                    # Split extracted data into 10,000 record batches and insert each
+                    for i in range(0, len(data), BATCH_SIZE):
+                        batch = data[i:i + BATCH_SIZE]
+                        batch_num = (i // BATCH_SIZE) + 1
                         
-                        # Small delay between requests
-                        if has_more:
-                            time.sleep(0.3)
-            
-            return fetch_indicator_data
+                        print(f"INSERTING: Batch {batch_num} ({len(batch):,} records)...")
+                        
+                        # Create temporary source for this batch
+                        @dlt.source
+                        def batch_source():
+                            @dlt.resource(
+                                name=indicator.lower().replace(' ', '_'),
+                                write_disposition="append"
+                            )
+                            def batch_data():
+                                yield batch
+                            return batch_data
+                        
+                        # Run immediate insert
+                        load_info = pipeline.run(batch_source())
+                        print(f"INSERTED: Batch {batch_num} complete")
+                    
+                    # Check if we need more pages
+                    if records_extracted < PAGE_SIZE:
+                        has_more = False
+                        print(f"Completed endpoint {endpoint_id}: {total_extracted:,} total records")
+                    else:
+                        page_number += 1
+                        retry_count = 0
+                    
+                    # Small delay between pages
+                    time.sleep(0.3)
+                    
+                except requests.exceptions.Timeout:
+                    retry_count += 1
+                    if retry_count <= MAX_RETRIES:
+                        print(f"Timeout, retry {retry_count}/{MAX_RETRIES}...")
+                        time.sleep(2 * retry_count)
+                    else:
+                        print(f"Max retries exceeded")
+                        break
+                        
+                except Exception as e:
+                    print(f" Error: {e}")
+                    break
         
-        # Load this indicator's data
-        try:
-            print(f"\nLoading {indicator} to DuckDB...")
-            load_info = pipeline.run(indicator_source())
-            print(f"Successfully loaded {indicator}")
-            
-        except Exception as e:
-            print(f"Failed to load {indicator}: {e}")
-            continue
-        
-        # Delay between indicators
-        time.sleep(2)
+        # Delay between endpoints
+        time.sleep(1)
     
-    # Display final results
     print(f"\n{'='*60}")
-    print("LOADING COMPLETE - Summary")
+    print("STREAMING EXTRACTION COMPLETE")
     print(f"{'='*60}")
     
-    try:
-        with pipeline.sql_client() as client:
-            # Execute the query and get results
-            result = client.execute_query("SHOW TABLES")
-            tables = result.fetchall()
-            
-            print("\nCreated tables:")
-            total_rows = 0
-            for table in tables:
-                table_name = table[0]
-                count_result = client.execute_query(f"SELECT COUNT(*) FROM {table_name}")
-                count = count_result.fetchone()[0]
-                total_rows += count
-                print(f"  - {table_name}: {count:,} rows")
-            
-            print(f"\nTOTAL RECORDS LOADED: {total_rows:,}")
-            
-            # Show sample data
-            print("\nSample data (first 3 rows):")
-            for table in tables:
-                table_name = table[0]
-                print(f"\n  {table_name}:")
-                sample_result = client.execute_query(f"SELECT * FROM {table_name} LIMIT 3")
-                sample = sample_result.fetchall()
-                print(sample)
-                
-    except Exception as e:
-        print(f"Error querying database: {e}")
-
 if __name__ == "__main__":
-    data_extraction()
+    data_extraction_streaming()
