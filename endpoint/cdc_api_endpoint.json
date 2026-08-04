@@ -1,16 +1,4 @@
-{
-    "CDC" : {
-        "Diabetes":{
-            "Diabetes_Indicator": {
-                "Diabetes_USDSS_ind": "73uh-igb7"
-            }
-        },
-        "Stroke": {
-            "Stroke_Mortality":{
-                "Stroke_Mort_2000-2019": "7b9s-s8ck",
-                "Stroke_Mort_2019-2021": "vutr-sfkh",
-                "Stroke_Mort_2022-2024": "y5ii-knwc"
-            }
-        }
-    }
+{    
+    "diabetes_indicator": ["73uh-igb7"],
+    "stroke_mortality": ["7b9s-s8ck","vutr-sfkh","y5ii-knwc"]
 }

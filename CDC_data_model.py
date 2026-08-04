@@ -32,10 +32,14 @@ class Diabetes_Indicator(Base):
     age: Mapped[Optional[str]]             
     race: Mapped[Optional[str]]            
     sex: Mapped[Optional[str]]
-    eductaion: Mapped[Optional[str]]       
+    education: Mapped[Optional[str]]       
+    other_info: Mapped[Optional[str]]
+    
+    _dlt_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
+    _dlt_load_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     
     def __repr__(self) -> str:
-        return f"User(id={self.id!r},year={self.year!r},indicator={self.indicator!r},unit={self.unit!r},estimates={self.estimates!r},se_estimates={self.se_estimates!r},lower_limit={self.lower_limit!r},upper_limit={self.upper_limit!r},population={self.population!r},age={self.age!r},race={self.race!r},sex={self.sex!r},education={self.eductaion!r})"
+        return f"User(id={self.id!r},year={self.year!r},indicator={self.indicator!r},unit={self.unit!r},estimates={self.estimates!r},se_estimates={self.se_estimates!r},lower_limit={self.lower_limit!r},upper_limit={self.upper_limit!r},population={self.population!r},age={self.age!r},race={self.race!r},sex={self.sex!r},education={self.education!r})"
     
 class Stroke_Mortality(Base):
     __tablename__ = 'stroke_mortality'
@@ -48,6 +52,9 @@ class Stroke_Mortality(Base):
     sex: Mapped[Optional[str]]
     race: Mapped[Optional[str]]
     fips: Mapped[Optional[str]]
+    
+    _dlt_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
+    _dlt_load_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     
     def __repr__(self) -> str:
         return f"stroke_mortality(id={self.id!r},year={self.year!r},state={self.state!r},location={self.location!r},geo_level={self.geo_level!r},rate={self.rate!r},sex={self.sex!r},race={self.race!r},fips={self.fips!r})"

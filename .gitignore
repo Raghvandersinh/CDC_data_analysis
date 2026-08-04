@@ -2,3 +2,5 @@
 .env
 /data
 cdc_separate_indicator.duckdb
+.dlt
+__pycache__
