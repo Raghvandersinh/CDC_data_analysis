@@ -1,4 +1,6 @@
 Process:
-1. Data Modeling. Using SQLAlchemy ORM to design Database Schema. 
-1. Get Data From CDC API Source using requests, then outputting a JSON file 
-2. Use DuckDB to connect to JSON file and Clean Data 
+
+1. Create Data Model first.
+2. Create ETL pipeline using dlt
+3. Use DuckDb for Analysis. 
+4. Use PowerBI for Visualization. 

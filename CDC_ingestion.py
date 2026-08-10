@@ -1,14 +1,23 @@
 from pathlib import Path
 import json
-import dlt
-from dlt.sources.helpers import requests
 import duckdb
 from dataclasses import field
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Generator
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 from sqlalchemy.orm import Session
+import time 
+import logging
+import requests
+
+logging.basicConfig(level=logging.INFO)
+
+logging.info('info')
+logging.debug('debug')
+logging.warning('warning')
+logging.error('error')
+logging.critical("critical")
 
 def json_length(filename:str) -> int:
     json_path = json.load(open(filename))
@@ -27,72 +36,49 @@ def endpoints_dict() -> dict:
     
 def get_endpoint(key_target:str) -> list:
     endpoints = endpoints_dict()
-    return  endpoints[key_target.lower()]
+    return endpoints[key_target.lower()]
 
-@dlt.source
-def cdc_api(base_url: str = "https://data.cdc.gov/api/v3/views"):
-    """
-    Source that combines multiple API endpoints. 
-    Returns multiple resources that create separate tables. 
-    Args:
-        base_url (_type_, optional): base CDC API URL. Defaults to "https://data.cdc.gov/api/v3/views".
-    """
-    return[
-        diabetes_indicator(base_url=base_url)
-    ]
-
-@dlt.resource(
-    table_name= "diabetes_ind",
-    write_disposition="replace"
-)
-def diabetes_indicator(base_url: str):
-    diabetes_ind_endpoint = get_endpoint(key_target="diabetes_indicator")
-    PAGE_SIZE = 10000
+def transform_diabetes_ind(data:list = None) -> list:
+    res = []
+    print(data[0].keys())
+    for di in data:
+        res.append({
+            'year': di.get('year'),
+            'indicator':di.get('indicator'),
+            'unit':di.get('unit'),
+            'estimate': float(di.get('estimate', 0)) or None,
+            'se_estimate': float(di.get('seestimate', 0)) or None,
+            'lower_limit': float(di.get('lowerlimit', 0)) or None,
+            'upper_limit': float(di.get('upperlimit',0)) or None,
+            'population': di.get('population'),
+            'age': di.get('age'),
+            'race': di.get('race'),
+            'sex': di.get('sex'),
+            'education': di.get('education'),
+            'other_info': di.get('other_stratification')
+        })
+    return res 
+def etl_pipeline(base_url:str, endpoints:list, pageSize:int, transform_data: list):
     page = 1
-    endpoint = f"{base_url}/{diabetes_ind_endpoint[0]}/query.json"
-    
-    while True:
-        parameter = {
-                "pageNumber":page,
-                "pageSize":PAGE_SIZE
-        }
-        response = requests.get(
-            endpoint,
-            params=parameter
-        )
-        response.raise_for_status()
-        data = response.json()
-        
-        if not data:
-            break
-        print(page)
-        for di in data:
-            yield{
-                'year': di.get('year'),
-                'indicator': di.get("indicator"),
-                'unit': di.get('unit'),
-                'estimates': di.get("estimate"),
-                'se_estimates': di.get("seestimate"),
-                'lower_limit': di.get('lowerlimit'),
-                'upper_limit': di.get('upperlimit'),
-                'population': di.get('population'),
-                'age': di.get('age'),
-                'race': di.get('race'),
-                'sex': di.get('sex'),
-                'education': di.get('education'),
-                'other_info': di.get('other_stratification')
+    for endpoint in endpoints:
+        endpoint_url = f"{base_url}{endpoint}"
+        loop_count = 10
+        while loop_count != 0:
+            parameter = {
+                'pageSize': pageSize,
+                'pageNumber': page
             }
+            response = requests.get(endpoint_url, params=parameter)
+            data = response.json()
+            transformed_data = transform_data(data) 
+            print(data[0:10])
+            print(transformed_data[0:10])
+            if len(data) <= pageSize:
+                break
             
-        page += 1
-if __name__ == "__main__":
-    
-    
-    # Run dlt pipeline
-    pipeline = dlt.pipeline(
-        pipeline_name="cdc_analysis_pipeline",
-        destination='postgres',
-        dataset_name="cdc_analysis"
-    )
-    load_info = pipeline.run(cdc_api())
-    print(load_info)
+
+if __name__ == '__main__':
+    base_url = 'https://data.cdc.gov/api/v3/views/'
+    endpoints = get_endpoint(key_target="diabetes_ind")
+    etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=10000, transform_data=transform_diabetes_ind)
     

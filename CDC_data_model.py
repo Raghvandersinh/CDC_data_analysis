@@ -21,19 +21,19 @@ class Diabetes_Indicator(Base):
     __tablename__ = 'diabetes_ind'
     
     id: Mapped[int] = mapped_column(primary_key=True)
-    year: Mapped[str] = mapped_column(String(4))
-    indicator: Mapped[Optional[str]]
-    unit: Mapped[Optional[str]]
-    estimates: Mapped[Optional[float]]
-    se_estimates: Mapped[Optional[float]]
-    lower_limit: Mapped[Optional[float]]     
-    upper_limit: Mapped[Optional[float]]
-    population: Mapped[Optional[str]]      
-    age: Mapped[Optional[str]]             
-    race: Mapped[Optional[str]]            
-    sex: Mapped[Optional[str]]
-    education: Mapped[Optional[str]]       
-    other_info: Mapped[Optional[str]]
+    year: Mapped[str] = mapped_column(String(4), nullable= True)
+    indicator: Mapped[Optional[str]] = mapped_column(nullable=True)
+    unit: Mapped[Optional[str]] = mapped_column(nullable=True)
+    estimate: Mapped[Optional[float]] = mapped_column(nullable=True)
+    se_estimate: Mapped[Optional[float]] = mapped_column(nullable=True)
+    lower_limit: Mapped[Optional[float]] = mapped_column(nullable=True)    
+    upper_limit: Mapped[Optional[float]] = mapped_column(nullable=True)
+    population: Mapped[Optional[str]] = mapped_column(nullable=True)     
+    age: Mapped[Optional[str]] = mapped_column(nullable=True)            
+    race: Mapped[Optional[str]]  = mapped_column(nullable=True)           
+    sex: Mapped[Optional[str]] = mapped_column(nullable=True)
+    education: Mapped[Optional[str]] = mapped_column(nullable=True)       
+    other_info: Mapped[Optional[str]] = mapped_column(nullable=True)
     
     _dlt_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     _dlt_load_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
@@ -44,15 +44,14 @@ class Diabetes_Indicator(Base):
 class Stroke_Mortality(Base):
     __tablename__ = 'stroke_mortality'
     id: Mapped[int] = mapped_column(primary_key=True)
-    year: Mapped[str] = mapped_column(String(4))
-    state: Mapped[Optional[str]]
-    location: Mapped[Optional[str]]
-    geo_level: Mapped[Optional[str]]
-    rate: Mapped[Optional[str]]
-    sex: Mapped[Optional[str]]
-    race: Mapped[Optional[str]]
-    fips: Mapped[Optional[str]]
-    
+    year: Mapped[str] = mapped_column(String(4), nullable=True)
+    state: Mapped[Optional[str]]  = mapped_column(nullable=True)
+    location: Mapped[Optional[str]] = mapped_column(nullable=True)
+    geo_level: Mapped[Optional[str]] = mapped_column(nullable=True)
+    rate: Mapped[Optional[str]] = mapped_column(nullable=True)
+    sex: Mapped[Optional[str]] = mapped_column(nullable=True)
+    race: Mapped[Optional[str]] = mapped_column(nullable=True)
+    fips: Mapped[Optional[str]] = mapped_column(nullable=True)
     _dlt_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     _dlt_load_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     

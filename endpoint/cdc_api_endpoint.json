@@ -1,4 +1,4 @@
 {    
-    "diabetes_indicator": ["73uh-igb7"],
-    "stroke_mortality": ["7b9s-s8ck","vutr-sfkh","y5ii-knwc"]
+    "diabetes_ind": ["73uh-igb7/query.json"],
+    "stroke_mortality": ["7b9s-s8ck/query.json","vutr-sfkh/query.json","y5ii-knwc/query.json"]
 }
