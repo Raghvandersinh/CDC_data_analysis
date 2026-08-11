@@ -15,12 +15,14 @@ try:
 except Exception as e:
     print('Failed to connect')
     print(e)
+
 class Base(DeclarativeBase):
     pass
 class Diabetes_Indicator(Base):
     __tablename__ = 'diabetes_ind'
     
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    api_id: Mapped[str] = mapped_column(unique=True, nullable=False)   
     year: Mapped[str] = mapped_column(String(4), nullable= True)
     indicator: Mapped[Optional[str]] = mapped_column(nullable=True)
     unit: Mapped[Optional[str]] = mapped_column(nullable=True)
@@ -35,15 +37,14 @@ class Diabetes_Indicator(Base):
     education: Mapped[Optional[str]] = mapped_column(nullable=True)       
     other_info: Mapped[Optional[str]] = mapped_column(nullable=True)
     
-    _dlt_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
-    _dlt_load_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
-    
+
     def __repr__(self) -> str:
         return f"User(id={self.id!r},year={self.year!r},indicator={self.indicator!r},unit={self.unit!r},estimates={self.estimates!r},se_estimates={self.se_estimates!r},lower_limit={self.lower_limit!r},upper_limit={self.upper_limit!r},population={self.population!r},age={self.age!r},race={self.race!r},sex={self.sex!r},education={self.education!r})"
     
 class Stroke_Mortality(Base):
     __tablename__ = 'stroke_mortality'
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    api_id: Mapped[str] = mapped_column(unique=True, nullable=False)   
     year: Mapped[str] = mapped_column(String(4), nullable=True)
     state: Mapped[Optional[str]]  = mapped_column(nullable=True)
     location: Mapped[Optional[str]] = mapped_column(nullable=True)
@@ -52,9 +53,7 @@ class Stroke_Mortality(Base):
     sex: Mapped[Optional[str]] = mapped_column(nullable=True)
     race: Mapped[Optional[str]] = mapped_column(nullable=True)
     fips: Mapped[Optional[str]] = mapped_column(nullable=True)
-    _dlt_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
-    _dlt_load_id: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
-    
+
     def __repr__(self) -> str:
         return f"stroke_mortality(id={self.id!r},year={self.year!r},state={self.state!r},location={self.location!r},geo_level={self.geo_level!r},rate={self.rate!r},sex={self.sex!r},race={self.race!r},fips={self.fips!r})"
     

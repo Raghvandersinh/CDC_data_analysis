@@ -2,8 +2,8 @@ from pathlib import Path
 import json
 import duckdb
 from dataclasses import field
-from typing import List, Any, Generator, Dict
-import threading
+from typing import List, Any, Generator, Dict, Union
+from threading import Lock
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 from sqlalchemy.orm import Session
@@ -18,7 +18,11 @@ import os
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
 load_dotenv()
 
-engine = create_engine(os.getenv('DATABASE_URL_SCHEMA'))
+engine = create_engine(os.getenv('DATABASE_URL_SCHEMA'),
+                       pool_size=10,
+                       max_overflow=20,
+                       pool_pre_ping=True,
+                       pool_recycle=3600)
 Session = sessionmaker(bind=engine)
 
 metadata = MetaData()
@@ -33,6 +37,7 @@ logging.debug('debug')
 logging.warning('warning')
 logging.error('error')
 logging.critical("critical")
+
 
 def json_length(filename:str) -> int:
     json_path = json.load(open(filename))
@@ -56,6 +61,7 @@ def get_endpoint(key_target:str) -> list:
 def transform_single_diabetes_ind(endpoint_data):
     try:
         return{
+                'api_id': endpoint_data.get(':id'),
                 'year': endpoint_data.get('year'),
                 'indicator':endpoint_data.get('indicator'),
                 'unit':endpoint_data.get('unit'),
@@ -121,22 +127,73 @@ def transform_endpoint_data(data:list = None, max_workers: int = None, chunk_siz
     
     return result 
 
-def upsert_data(transformed_data:list = None, table:str = None, engine=engine, conflict_columns = None, update_columns = None):
+def upsert_data(transformed_data:list = None, 
+                table: Union[Table, str] = None, 
+                engine=engine, 
+                conflict_columns = None, 
+                update_columns = None,
+                batch_size = 1000,
+                max_workers = 4):
     
     if not transformed_data:
         logger.warning("No data to upsert")
         return 0
-    if not db_table or not engine:
+    if not table or not engine:
         logger.error("db_table and engine are required")
         return 0
+    
+    if isinstance(table, str):
+        table = Table(table, metadata, autoload_with=engine)
+        logger.info(f"Reflected table: {table.name}")
+        
     if conflict_columns is None:
         conflict_columns = ['id']
+    if update_columns is None:
+        update_columns = [col.name for col in table.columns
+                         if col.name not in conflict_columns]
     
-    logger.info(f"Upserting {len(transformed_data)} records into {db_table.name}")
+    batches = [transformed_data[i:i + batch_size] for i in range(0, len(transformed_data), batch_size)]
+    logger.info(f"Processing {len(batches)} batches with {max_workers} threads")
+    def process_batch(batch_data, batch_id):
+        """Process a single batch in a thread"""
+        try:
+            with engine.connect() as conn:
+                with conn.begin():
+                    stmt = insert(table).values(batch_data)
+                    upsert_stmt = stmt.on_conflict_do_update(
+                        index_elements=conflict_columns,
+                        set_={col: getattr(stmt.excluded, col) for col in update_columns}
+                    )
+                    result = conn.execute(upsert_stmt)
+                    conn.commit()
+                    logger.debug(f"Batch {batch_id}: Upserted {len(batch_data)} records")
+                    return len(batch_data)
+        except Exception as e:
+            logger.error(f"Batch {batch_id} failed: {e}")
+            return 0
     
-    try:
+    # Execute in parallel
+    total_upserted = 0
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(process_batch, batch, idx): idx 
+            for idx, batch in enumerate(batches)
+        }
+        
+        for future in as_completed(futures):
+            batch_idx = futures[future]
+            try:
+                count = future.result()
+                total_upserted += count
+                logger.info(f"Batch {batch_idx + 1}/{len(batches)} completed - {count} records")
+            except Exception as e:
+                logger.error(f"Batch {batch_idx + 1} failed: {e}")
     
-def etl_pipeline(base_url:str, endpoints:list, pageSize:int, transform_data = None, transform_single_func = None):
+    logger.info(f"Total upserted: {total_upserted} records")
+    return total_upserted
+    
+    
+def etl_pipeline(base_url:str, endpoints:list, pageSize:int, transform_data = None, transform_single_func = None, table:str = None):
     
     logger.info("=" * 60)
     logger.info(f"Starting the Main ETL Pipeline")
@@ -191,6 +248,10 @@ def etl_pipeline(base_url:str, endpoints:list, pageSize:int, transform_data = No
                 break
         logger.info(f"Completed endpoint {endpoint}: Retrieved {endpoint_record_count} records")
     
+    logger.info("Starting data Loading...")
+    upsert_data(transformed_data= all_transformed_data, table=table, conflict_columns=['api_id'], batch_size=10000)
+    
+    
     logger.info('=' * 60)
     logger.info(f"ETL Pipeline Completed")
     logger.info(f"Total page processed: {total_pages_processed}")
@@ -202,8 +263,9 @@ if __name__ == '__main__':
     logger.info("Starting script")
     logger.info("Initializing ETL pipeline...")
     
+    table = "diabetes_ind"
     base_url = 'https://data.cdc.gov/api/v3/views/'
-    endpoints = get_endpoint(key_target="diabetes_ind")
+    endpoints = get_endpoint(key_target=table)
     etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=10000, 
-                 transform_data=transform_endpoint_data, transform_single_func=transform_single_diabetes_ind)
+                 transform_data=transform_endpoint_data, transform_single_func=transform_single_diabetes_ind, table=table)
     
