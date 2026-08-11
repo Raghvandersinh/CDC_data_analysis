@@ -1,6 +1,6 @@
 Process:
 
 1. Create Data Model first.
-2. Create ETL pipeline using dlt
+2. Create ETL pipeline.
 3. Use DuckDb for Analysis. 
 4. Use PowerBI for Visualization. 
