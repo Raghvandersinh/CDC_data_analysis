@@ -21,6 +21,11 @@ https://data.cdc.gov/Heart-Disease-Stroke-Prevention/Rates-and-Trends-in-Heart-D
 https://data.cdc.gov/Heart-Disease-Stroke-Prevention/Stroke-Mortality-Data-Among-US-Adults-35-by-State-/vutr-sfkh/about_data (2019-2021)
 https://data.cdc.gov/Heart-Disease-Stroke-Prevention/Stroke-Mortality-Data-Among-US-Adults-35-by-State-/y5ii-knwc/about_data (2022-2024)
 
+https://data.cdc.gov/api/v3/views/7b9s-s8ck/query.json?pageNumber=1&pageSize=10
+https://data.cdc.gov/api/v3/views/vutr-sfkh/query.json?pageNumber=1&pageSize=10
+https://data.cdc.gov/api/v3/views/y5ii-knwc/query.json?pageNumber=1&pageSize=10
+
+
 Year
 State
 Location
