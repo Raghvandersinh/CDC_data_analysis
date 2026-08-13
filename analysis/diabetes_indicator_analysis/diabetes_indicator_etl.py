@@ -1,13 +1,13 @@
 import duckdb
-from pathlib import Path
+from dotenv import load_dotenv
+import os
 
-def connect_to_database():
-    current_dir = Path(__file__).parent
-    analysis_dir = current_dir.parent.parent
-    db_path = analysis_dir / "cdc_separate_indicator.duckdb"
+load_dotenv()
 
-    # Connect to the database
-    return duckdb.connect(str(db_path))
+con = duckdb.connect()
 
-conn = connect_to_database()
-print(conn.sql("SELECT Year FROM cdc_health_data.diabetes_indicator LIMIT 10").df())
+SCHEMA = os.getenv("CDC_DB_SCHEMA")
+con.execute(f"ATTACH '{os.getenv("CDC_CONNECTION_STRING")}' AS cdc_pgdb (TYPE postgres, SCHEMA {SCHEMA});")
+
+result = con.execute("SELECT * FROM cdc_pgdb.diabetes_ind LIMIT 5").df()
+print(result)

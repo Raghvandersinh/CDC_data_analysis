@@ -349,6 +349,6 @@ if __name__ == '__main__':
     table = "stroke_mortality"
     base_url = 'https://data.cdc.gov/api/v3/views/'
     endpoints = get_endpoint(key_target=table)
-    etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=10, 
-                 transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=1)
+    etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=50000, 
+                 transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=None)
     
