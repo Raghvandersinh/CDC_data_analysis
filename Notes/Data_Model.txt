@@ -1,5 +1,6 @@
 1. Diabetes Indicator:
 Link: https://data.cdc.gov/U-S-Diabetes-Surveillance-System/USDSS-National-Other-Diabetes-Indicators/73uh-igb7/data_preview
+filter 10 page: https://data.cdc.gov/api/v3/views/73uh-igb7/query.json?pageNumber=1&pageSize=10
 
 Name            Type
 Year            Text
@@ -34,3 +35,7 @@ Rate
 Sex
 Race
 Fips 
+
+
+3. ICD Codes:
+

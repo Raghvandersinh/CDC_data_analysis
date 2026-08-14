@@ -58,7 +58,7 @@ def get_endpoint(key_target:str) -> list:
     endpoints = endpoints_dict()
     return endpoints[key_target.lower()]
 
-def transform_single_diabetes_ind(endpoint_data):
+def transform_single_diabetes_ind(endpoint_data, endpoint_id = None):
     try:
         return{
                 'api_id': endpoint_data.get(':id'),
@@ -346,9 +346,9 @@ if __name__ == '__main__':
     logger.info("Starting script")
     logger.info("Initializing ETL pipeline...")
     
-    table = "stroke_mortality"
+    table = "diabetes_ind"
     base_url = 'https://data.cdc.gov/api/v3/views/'
     endpoints = get_endpoint(key_target=table)
     etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=50000, 
-                 transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=None)
+                 transform_data=transform_endpoint_data, transform_single_func=transform_single_diabetes_ind, table=table, max_page=None)
     
