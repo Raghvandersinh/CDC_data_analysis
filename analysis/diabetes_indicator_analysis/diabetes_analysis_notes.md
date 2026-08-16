@@ -6,7 +6,7 @@
 
 - We are currently using the USDSS National Other Diabetes Indicators, which does not include location but rather includes Other Stratification 
 
-- This data survillance mostly consists of type 2 diabetes, 90%-95% of accounted diabetes are diagnosed. 
+- This data survillance mostly consists of type 2 diabetes, 90%-95% of accounted diabetes are diagnosed are type 2 rest 10%-5% are type 1 diabetes. 
 
 ## What are the columns we are working with?
 
@@ -26,4 +26,4 @@
 |Eductaion|Text|The education level for this specfic estimates|
 |Other Stratification|Text|The Other Stratification level for this specific estimates|
 
-## 
+## Data Exploration and Quality Check

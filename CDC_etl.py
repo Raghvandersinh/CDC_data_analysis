@@ -39,10 +39,6 @@ logging.error('error')
 logging.critical("critical")
 
 
-def json_length(filename:str) -> int:
-    json_path = json.load(open(filename))
-    return len(json_path)
-
 def endpoints_dict() -> dict:
     """
     Opens and reads the /endpoint/cdc_api_endpoint.json, which contains list of API endpoint identifier
@@ -55,10 +51,29 @@ def endpoints_dict() -> dict:
         return json.loads(content)
     
 def get_endpoint(key_target:str) -> list:
+    """
+    Reads the cdc_api_endpoint.json file and returns the value of the key containing list of endpoints
+
+    Args:
+        key_target (str): key value from the dict
+
+    Returns:
+        list: value of the key containing list of endpoints
+    """
     endpoints = endpoints_dict()
     return endpoints[key_target.lower()]
 
 def transform_single_diabetes_ind(endpoint_data, endpoint_id = None):
+    """
+    Transforms a single value from the raw CDC diabetes indicator data from the CDC REST API making it database insertion ready
+
+    Args:
+        endpoint_data (_type_): Raw data from the CDC diabetes indicator endpoint API data
+        endpoint_id (_type_, optional): specfic endpoint id from the list(look at cdc_api_endpoint for example.)
+
+    Returns:
+        dict: transformed dict 
+    """
     try:
         return{
                 'api_id': endpoint_data.get(':id'),
@@ -81,6 +96,16 @@ def transform_single_diabetes_ind(endpoint_data, endpoint_id = None):
         logger.debug(f"Problem record data: {endpoint_data}")
         return None 
 def transform_single_stroke_mortality(endpoint_data, endpoint_id = None):
+    """
+    Transforms a single value from the raw CDC stroke mortaility data from the CDC REST API making it database insertion ready
+
+    Args:
+        endpoint_data (_type_): Raw data from the CDC storke mortaility endpoint API data
+        endpoint_id (_type_, optional): specfic endpoint id from the list(look at cdc_api_endpoint for example.)
+
+    Returns:
+        dict: transformed dict 
+    """
     try:
         # Handle value field - check for "NA" before converting to float
         raw_value = endpoint_data.get('data_value')
@@ -119,7 +144,16 @@ def transform_single_stroke_mortality(endpoint_data, endpoint_id = None):
         return None 
     
 def process_chunk(transform_func, chunk_data, endpoint_id = None):
-    
+    """
+    Processes a batch(chunk) of data records by applying a transformation function(those transform_single_...() function above) to each record in the chunk
+    Args:
+        transform_func (_type_): one of the transform_single_...() from above
+        chunk_data (_type_): raw API data in the chunk 
+        endpoint_id (_type_, optional): Specific API endpoint from a key value in cdc_api_endpoint.json Defaults to None.
+
+    Returns:
+        list: Returns transformed dict chunk data in a list. 
+    """
     logger.debug(f"Processing chunk of size {len(chunk_data)}")
     if endpoint_id:
         return [transform_func(record, endpoint_id) for record in chunk_data]
@@ -131,7 +165,21 @@ def transform_endpoint_data(data:list = None,
                             chunk_size: int = 1000, 
                             transform_single_func=None,
                             endpoint_id = None) -> list:
-    
+    """
+    1. Gets the Raw API Data from the specfic endpoint_id.
+    2. Breaks the large data in to chunks based on the chunk_size
+    3. Uses Threading to split the work of transforming chunks between 4 workers 
+    4. returns a transformed data dictionary
+    Args:
+        data (list, optional): Raw Api endpoint data. Defaults to None.
+        max_workers (int, optional): Number of threads being used to transform chunks. Defaults to None.
+        chunk_size (int, optional): _description_. Size of a single chunk data. Default 1000
+        transform_single_func (_type_, optional): Transformation function being used depending on the endpoint. Defaults to None.
+        endpoint_id (_type_, optional): What endpoint are extracting the data from. Defaults to None.
+
+    Returns:
+        list: list of transformed dict records
+    """
     if not data or not transform_single_func:
         logger.warning("No data provided or No transformation function provided")
         return []
@@ -181,6 +229,25 @@ def upsert_data(transformed_data:list = None,
                 exclude_columns=None,
                 batch_size = 1000,
                 max_workers = 4):
+    """
+    1. gets the transformed data(From the transfomr_endpoint_data() most likely)
+    2. Breaks the transformed data into batches for seemless data entry.
+    3. Uses threading to split the work of "upserting data into the database" by max_workers
+    4. old data get updated and new data gets inserted
+
+    Args:
+        transformed_data (list, optional): list containing transformed dict data. Defaults to None.
+        table (Union[Table, str], optional): table we want to connect to in our database schema. Defaults to None.
+        engine (_type_, optional): _description_. bridges the connection between database and python .Defaults to engine.
+        conflict_columns (_type_, optional): checks if we have this column data in the database schema table. Defaults to None.
+        update_columns (_type_, optional): _description_. columns we would like to update in our database schema table.
+        exclude_columns (_type_, optional): _description_.columns we would like to exclude from upserting into our database schema table .Defaults to None.
+        batch_size (int, optional): _description_. Batches we would like to split out transformed data into .Defaults to 1000.
+        max_workers (int, optional): _description_. Amount of threads(workers) working on inserting data into the database .Defaults to 4.
+
+    Returns:
+        int: total amounted of data inserted into the database
+    """
     
     if not transformed_data:
         logger.warning("No data to upsert")
@@ -250,7 +317,23 @@ def etl_pipeline(base_url: str,
                  transform_single_func=None, 
                  table: str = None,
                  max_page: int = None):
-    
+    """
+    The main pipeline that combines all the function above.
+    1. Connects to the API source using the endpoint_id and brings in the raw data
+    2. Transforms data by chunks and returns a transformed list of dicts. 
+    3. Upserts the transformed data into the database using batches. 
+    Args:
+        base_url (str): base url of the API
+        endpoints (list): endpoint of the API url
+        pageSize (int): size of each API url page. 
+        transform_data (_type_, optional): transformed data from transform_endpoint_data() function. Defaults to None.
+        transform_single_func (_type_, optional): _description_. One of the transform single function .Defaults to None.
+        table (str, optional): _description_. table in the database where we went to upsert data into .Defaults to None.
+        max_page (int, optional): _description_. Maximum number of page we went to traverse in our API .Defaults to None.
+
+    Returns:
+        dict: the transformed data inserted into the database
+    """
     logger.info("=" * 60)
     logger.info(f"Starting the Main ETL Pipeline")
     logger.info(f"Base URL: {base_url}")
@@ -261,16 +344,16 @@ def etl_pipeline(base_url: str,
     logger.info('=' * 60)
     
     all_transformed_data = []
-    total_pages_processed = 0  # ✅ Initialize once
+    total_pages_processed = 0  # Initialize once
     
     for endpoint_idx, endpoint in enumerate(endpoints):
         logger.info(f"\n--- Processing endpoint {endpoint_idx + 1}/{len(endpoints)}: {endpoint}---")
         endpoint_url = f"{base_url}{endpoint}"
         page = 1
-        endpoint_record_count = 0  # ✅ Initialize per endpoint
+        endpoint_record_count = 0  # nitialize per endpoint
         
         while True:
-            # ✅ Check max_page before making the request
+            #  Check max_page before making the request
             if max_page and page > max_page:
                 logger.info(f"Max page {max_page} reached. Stopping endpoint {endpoint}")
                 break
@@ -291,8 +374,8 @@ def etl_pipeline(base_url: str,
                     break
                     
                 logger.info(f"Page {page}: Retrieved {len(data)} records")
-                endpoint_record_count += len(data)  # ✅ Accumulate
-                total_pages_processed += 1  # ✅ Accumulate
+                endpoint_record_count += len(data)  # Accumulate
+                total_pages_processed += 1  # Accumulate
                 
                 if transform_data and transform_single_func:
                     endpoint_id = endpoint.split('/')[0]
@@ -321,14 +404,14 @@ def etl_pipeline(base_url: str,
                 
         logger.info(f"Completed endpoint {endpoint}: Retrieved {endpoint_record_count} records")
     
-    # ✅ Only upsert if we have data
+    # Only upsert if we have data
     if all_transformed_data:
         logger.info(f"\nStarting data Loading... ({len(all_transformed_data)} records)")
         upsert_data(
             transformed_data=all_transformed_data,
             table=table,
             conflict_columns=['api_id'],
-            exclude_columns=['id'],  # ← CRITICAL FIX
+            exclude_columns=['id'], 
             batch_size=10000
         )
     else:
