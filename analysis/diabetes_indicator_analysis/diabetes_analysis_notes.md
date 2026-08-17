@@ -26,4 +26,9 @@
 |Eductaion|Text|The education level for this specfic estimates|
 |Other Stratification|Text|The Other Stratification level for this specific estimates|
 
-## Data Exploration and Quality Check
+## Various Questions we can answer:
+
+1. What is the most leading cause of diabetes for each specific indicator?
+    1. Notes:
+        1. Indicators are basically data based 
+        2. This will be based on all Sex, Race, Education, and Age
