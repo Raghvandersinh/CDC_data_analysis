@@ -26,9 +26,14 @@
 |Eductaion|Text|The education level for this specfic estimates|
 |Other Stratification|Text|The Other Stratification level for this specific estimates|
 
-## Various Questions we can answer:
+## Business Problems:
 
-1. What is the most leading cause of diabetes for each specific indicator?
-    1. Notes:
-        1. Indicators are basically data based 
-        2. This will be based on all Sex, Race, Education, and Age
+1. What is the most leading cause of diabetes for each specific indicator with subcategories(other_info)?
+    1. What is the leading cause of diabetes for population who performed a A1C test(Blood Sugar test)?
+    2. What is the leading cause of diabetes for population who got their Blood Pressure tested?
+    3. What is the leading cause of diabetes for population based on BMI(Body Mass Index)?
+    4. What is the leading cause of diabetes for population based on there use of Diabetic Medition?
+    5. What is the leading cause of diabetes for population with LDL Cholesterol?
+    6. What is the leading cause of diabetes based on the populations Limitations in Mobility?
+    7. What is the leading cause of diabetes for population with Non-HDL Cholesterol?
+    8. What is the leading cause of diabetes for population with Cardiovascular Disease?
