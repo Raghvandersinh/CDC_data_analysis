@@ -23,6 +23,7 @@ class Diabetes_Indicator(Base):
     
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     api_id: Mapped[str] = mapped_column(unique=True, nullable=False)   
+    topic:  Mapped[str] = mapped_column(nullable=True)   
     year: Mapped[str] = mapped_column(String(4), nullable= True)
     indicator: Mapped[Optional[str]] = mapped_column(nullable=True)
     unit: Mapped[Optional[str]] = mapped_column(nullable=True)

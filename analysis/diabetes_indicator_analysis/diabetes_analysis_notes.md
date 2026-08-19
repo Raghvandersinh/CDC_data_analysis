@@ -26,7 +26,9 @@
 |Eductaion|Text|The education level for this specfic estimates|
 |Other Stratification|Text|The Other Stratification level for this specific estimates|
 
-## Business Problems:
+## Questions we could answer:
+
+1. What is the?
 
 1. What is the most leading cause of diabetes for each specific indicator with subcategories(other_info)?
     1. What is the leading cause of diabetes for population who performed a A1C test(Blood Sugar test)?

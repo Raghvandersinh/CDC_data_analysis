@@ -89,7 +89,8 @@ def transform_single_diabetes_ind(endpoint_data, endpoint_id = None):
                 'race': endpoint_data.get('race'),
                 'sex': endpoint_data.get('sex'),
                 'education': endpoint_data.get('education'),
-                'other_info': endpoint_data.get('other_stratification')
+                'other_info': endpoint_data.get('other_stratification'),
+                'topic': endpoint_data.get('topic')
             }
     except Exception as e:
         logger.error(f"Error transforming")
