@@ -4,3 +4,5 @@
 cdc_separate_indicator.duckdb
 .dlt
 __pycache__
+di_db.duckdb
+true_number_estimate.csv

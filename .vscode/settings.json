@@ -1,0 +1,18 @@
+{
+    "workbench.editorAssociations": {
+        "*.parquet": "duckdb.dataFileViewer",
+        "*.csv": "duckdb.dataFileViewer",
+        "*.tsv": "duckdb.dataFileViewer",
+        "*.xlsx": "duckdb.dataFileViewer"
+    },
+    "duckdb.databases": [
+        {
+            "alias": "di_db",
+            "type": "file",
+            "path": "c:\\Data_Analysis_Projects\\HHS_data_analysis\\analysis\\diabetes_indicator_analysis\\di_db.duckdb",
+            "readOnly": true,
+            "attached": true
+        }
+    ],
+    "duckdb.defaultDatabase": "di_db"
+}
