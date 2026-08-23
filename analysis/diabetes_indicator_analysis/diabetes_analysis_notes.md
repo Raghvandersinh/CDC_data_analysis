@@ -28,9 +28,8 @@
 
 ## Questions we could answer:
 
-1. What is the?
-
-1. What is the most leading cause of diabetes for each specific indicator with subcategories(other_info)?
+1. What is the main reason for people with diabetes to get Hospitalized?
+2. What is the most leading cause of diabetes By(%):
     1. What is the leading cause of diabetes for population who performed a A1C test(Blood Sugar test)?
     2. What is the leading cause of diabetes for population who got their Blood Pressure tested?
     3. What is the leading cause of diabetes for population based on BMI(Body Mass Index)?
@@ -39,3 +38,5 @@
     6. What is the leading cause of diabetes based on the populations Limitations in Mobility?
     7. What is the leading cause of diabetes for population with Non-HDL Cholesterol?
     8. What is the leading cause of diabetes for population with Cardiovascular Disease?
+3. Whats the main reason people get Diabetes (By Number of People)?
+4. What medication do people with diabetes use?
