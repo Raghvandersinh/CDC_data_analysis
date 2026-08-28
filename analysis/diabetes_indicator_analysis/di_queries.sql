@@ -13,5 +13,15 @@ COPY(
     FROM di_db.diabetes_ind
     WHERE unit LIKE '%Number%' and estimate is not NULL
     ORDER BY unit ASC
-) TO 'true_number_estimate.csv' (HEADER, DELIMITER ',');
+) TO 'analysis/diabetes_indicator_analysis/data/true_number_estimate.csv' (HEADER, DELIMITER ',');
+
+COPY(
+SELECT unit, year, indicator, topic, population, age, race, sex, education, other_info,
+CASE
+    WHEN (sex = 'All' and education = 'All' and race = 'All') THEN 'All_Population'
+    Else NULL
+END AS all_pop
+FROM di_db.diabetes_ind
+WHERE unit LIKE '%Percentage%' and estimate is Not Null and topic = 'Risk Factors for Complications'
+) TO 'analysis/diabetes_indicator_analysis/data/Risk_Factor_Percentage.csv' (HEADER, DELIMITER ',');
 

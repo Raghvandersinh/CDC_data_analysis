@@ -6,3 +6,5 @@ cdc_separate_indicator.duckdb
 __pycache__
 di_db.duckdb
 true_number_estimate.csv
+data
+Cdc_Analysis.pbix
