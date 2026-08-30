@@ -16,10 +16,10 @@ COPY(
 ) TO 'analysis/diabetes_indicator_analysis/data/true_number_estimate.csv' (HEADER, DELIMITER ',');
 
 COPY(
-SELECT unit, year, indicator, topic, population, age, race, sex, education, other_info,
+SELECT unit, year, estimate, indicator, topic, population, age, race, sex, education, other_info,
 CASE
-    WHEN (sex = 'All' and education = 'All' and race = 'All') THEN 'All_Population'
-    Else NULL
+    WHEN (sex = 'All' and education = 'All' and race = 'All') THEN True
+    Else False
 END AS all_pop
 FROM di_db.diabetes_ind
 WHERE unit LIKE '%Percentage%' and estimate is Not Null and topic = 'Risk Factors for Complications'
