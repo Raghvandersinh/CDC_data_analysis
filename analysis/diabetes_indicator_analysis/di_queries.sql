@@ -9,7 +9,11 @@ COPY(
     CASE
         WHEN unit LIKE '%Number%' and unit Like '%Discharges%' THEN 'Discharge'
         ELSE 'Normal'
-    END AS unit_category
+    END AS unit_category,
+    CASE
+    WHEN (sex = 'All' and education = 'All' and race = 'All') THEN True
+    Else False
+    END AS all_pop
     FROM di_db.diabetes_ind
     WHERE unit LIKE '%Number%' and estimate is not NULL
     ORDER BY unit ASC
