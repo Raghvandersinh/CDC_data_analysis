@@ -11,13 +11,13 @@ COPY(
         ELSE 'Normal'
     END AS unit_category,
     CASE
-    WHEN (sex = 'All' and education = 'All' and race = 'All') THEN True
-    Else False
+        WHEN (sex = 'All' and education = 'All' and race = 'All') THEN True
+        Else False
     END AS all_pop
-    FROM di_db.diabetes_ind
-    WHERE unit LIKE '%Number%' and estimate is not NULL
-    ORDER BY unit ASC
-) TO 'analysis/diabetes_indicator_analysis/data/true_number_estimate.csv' (HEADER, DELIMITER ',');
+FROM di_db.diabetes_ind
+WHERE unit LIKE '%Number%' and estimate is not NULL
+ORDER BY unit ASC
+) TO 'analysis/diabetes_indicator_analysis/data/Mental_and_Disability_Number.csv' (HEADER, DELIMITER ',');
 
 COPY(
 SELECT unit, year, estimate, indicator, topic, population, age, race, sex, education, other_info,
@@ -29,3 +29,5 @@ FROM di_db.diabetes_ind
 WHERE unit LIKE '%Percentage%' and estimate is Not Null and topic = 'Risk Factors for Complications'
 ) TO 'analysis/diabetes_indicator_analysis/data/Risk_Factor_Percentage.csv' (HEADER, DELIMITER ',');
 
+Select DISTINCT indicator FROM di_db.diabetes_ind
+WHERE topic LIKE '%Diabetes-Related%';
