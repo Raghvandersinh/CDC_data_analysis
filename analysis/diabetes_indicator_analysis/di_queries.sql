@@ -20,7 +20,7 @@ ORDER BY unit ASC
 ) TO 'analysis/diabetes_indicator_analysis/data/Mental_and_Disability_Number.csv' (HEADER, DELIMITER ',');
 
 COPY(
-SELECT unit, year, estimate, indicator, topic, population, age, race, sex, education, other_info,
+SELECT unit, year, estimate, indicator, topic, population, age, race, sex, education, other_info, se_estimate, lower_limit, upper_limit,
 CASE
     WHEN (sex = 'All' and education = 'All' and race = 'All') THEN True
     Else False
