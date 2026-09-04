@@ -29,13 +29,8 @@ What group of adults 18+ with diabetes for each risk factors (Blood Sugar(A1), B
 
 
 1. **2004(I am going to refer Adults 18+ with diabetes as AWD)**: 
-    1. Notice how AWD with "A1C <6.0" were significantly higher in the early 2000s compare to 2023. Why is that? Doesn't low blood sugar mean you don't have diabetes? Lets answer it:
-    2. A1C tests can be affected by various things, such as:
-        - Genetics
-        - Medical conditions
-        - Medications and supplements(**Most likely the case**).
-        - Errors in the collextion, transport, or processing of the test. 
-    3. I am leaning towards **Diabetic Medications** being the reason for AWD with A1C < 6.0 having diabetes. Since the blood sugar level is low, but the process of generating insulin is still affected from the previous high blood sugar. 
+    1. Notice how AWD with "A1C <6.0" were significantly higher in the early 2000s compare to 2023. Why is that? Lets answer it:
+    3. I am leaning towards **Diabetic Medications** being the reason for AWD with A1C < 6.0. 
     4. **This is actually good news**, diabetes was treated seriously in the past, AWD with A1C > 9.0, A1C 8.0-9.0, and A1C 7.0-7.9 were at a all time low.  
 2. **2006 - 2020**
     1. You will notice how AWD with "A1C <6.0 is gradaully doing down, while "A1C > 9.0" and "A1C 7.0-7.9" still remains the same. But **AWD with *"A1C 6.0-6.9" increase drastically after 2010**. This is a pretty alarming sign to whats to come. 
