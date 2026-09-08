@@ -19,6 +19,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 ## Blood Sugar (A1C)
 ![alt text](img/Risk_Factor/Blood_Sugar_All.png)
 ***
+### Basic Info:
 - Before we dive into the Analysis, lets first answer what A1C is? A1C is a blood test that provides information about your averaage levels of blood glucose, also called bloos sugar, over the past 3 months. It can be used to diagnose type 2 diabetes and prediabetics. **A Normal A1C level is below 5.7**.
 
 |**Diagnosis**| **A1C Level**|
@@ -37,8 +38,8 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
         1. The Covid Pandermic where majority of the population mostly lived indoors and most likely doing many physical activities, such as going to gyms or running outside. Also Covid-19 could possibly cause diabetes according to Sun H et al. 
         2. Dietary shift towards more processed foods with higher calories. 
 
-### Ciatation:
-    1. Kim, Sun H et al. “New-Onset Diabetes After COVID-19.” The Journal of clinical endocrinology and metabolism vol. 108,11 (2023): e1164-e1174. [doi:10.1210/clinem/dgad284](https://pmc.ncbi.nlm.nih.gov/articles/PMC11009784/)
+### Citation:
+    1. Kim, Sun H et al. “New-Onset Diabetes After COVID-19.” The Journal of clinical endocrinology and metabolism vol. 108,11 (2023): e1164-e1174. (https://pmc.ncbi.nlm.nih.gov/articles/PMC11009784/)
     2. diabetesfreesc.org "Understanding Your A1C Level and How It Can Help Manage Diabetes" https://www.diabetesfreesc.org/news/understanding-your-a1c-level-and-how-it-can-help-manage-diabetes
 
 
@@ -46,7 +47,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 ## Body Mass Index(BMI)
 ***
 ![alt text](img/Risk_Factor/BMI_All.png)
-
+### Basic Info:
 - What is BMI? It is a measure to calculate the measure of weight relative to height
 - Why does BMI matter? If you have a BMI > 30 you are considered obese, having fat can cause you to have insulin resistence, due to you pancreas being wearing out by keeping blood sugar levels in range. 
 |Status|BMI|
@@ -58,10 +59,32 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |Class 2 Obesity| 35 to 39.9|
 |Class 3 Obesity | 40 >|
 
+### What happend?
 1. **2004 - 2023**
-    1. As we can see from the the trend. **Obesity and overweight were both high in 2004 and 2023 respectively, But obesity still increasing from 2004 to 2023**. 
-    2. American is know for its obesity, due to americans reliance on Ultra-processed food packed with added sugars, sodium, calories, and unhealthy fats. 
+    1. As we can see from the the trend. **Obesity and overweight were both high in 2004 and 2023 respectively. However, obesity continued increasing from 2004 to 2023**. 
 
+### Why did this happen?
+1. According to Temple, Norman the obesity epidemic appeared in the USA in 1976-1980.
+2. But why did this obesity epidemic started?
+    1. Sugar intake:
+        1. The Sugar intake was fairly stable in the 1970s but rose sharply after 1978 according to Temple, Norman 3. 
+        2. Per Capita intake of total cloric sweetners was 124.6 lbs in 1978, then in 1997 it increated to 154.1 lbs
+    2. Dietary Fat:
+        1. In 1976-1980 US government recommended Americans to reduce far consumptions, the food industry responded with more low-fat products,
+        2. But from 1976-1980 to 1999-2000 show that the percentage of calories from fat decreased slightly, byut total energy intake increased, meaning overall amount of fat consumed likely stayed thge same or even rose slightly 
+        3. Temple, Normal 3 reseach shows that these changes in dietary fat intake had little connection to the Obesity pandemic.
+    3. Ultra-Processed Foods (UPF):
+        1. Foods that are prepared with mostly cheap sources of dietary energy and nutrients plus additives.
+        2. Mostly consists of high calories, salt, sugar, and fat but minimal amounts of whole foods. 
+        3. They also have low content of dietary fiber, phytochemicals and various micronutrients such as vitamin C, magnesium, and potassium
+        4. UPF's food consist of white breads, pizza, candy, ice cream, etc. 
+        4. This shows that UPF's played a major role in the Ameican obesity pandemic.
+    4. Roles of Farm Bills and Food Prices:
+        1. Healthier diets cost significant higher then less healthy diets. International study found that top qunatile cost for healthy food is $1.54 more per 2000 kcal(based on 2011 prices)
+        2. Shoppers tend to buy cheaper food. 
+
+### Citation:
+1. Temple, Norman J. “The Origins of the Obesity Epidemic in the USA-Lessons for Today.” Nutrients vol. 14,20 4253. 12 Oct. 2022, [doi:10.3390/nu14204253](https://pmc.ncbi.nlm.nih.gov/articles/PMC9611578/)
 ***
 
 ## Blood Pressure(BP)
@@ -69,7 +92,6 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 ![alt text](img/Risk_Factor/BP_All.png)
 
 - What is it? Blood Pressure is the force exerted by circulating blood agains the walls of the arteries
-- How does it correlates with diabetes? High Blood Sugar > Wears Down Artries(where blood travels) -> making it harder for flood to flow. Think of it as pinching a water hose
 - What can happen? High blood pressure can lead to risks of a Stroke and Heart Attack
 
 |Levels|SBP|
@@ -81,6 +103,17 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |Severe High BP| 180 >|
 |High BP Emergency| 180 >|
 
-1. From the consistent trend from 2004-2023 we can see that, 30-39% of AWD have normal Blood Pressure, But about 40-50% of AWD have Stage 1 High Blood Pressure.
+### What happend?
+1. **2004-2023**
+    1. From the consistent trend from 2004-2023 we can see that, 30-39% of AWD have normal Blood Pressure, But about 40-50% of AWD have Stage 1 High Blood Pressure.
+
+### Why does this happen?
+1. High blood pressure(Hypertension) and diabetes are two common metabolic disorders that often coexist in the same individual. Combination of both can lead to risks of Heart Disease and Strokes. 
+2. High Blood Sugar > Wears Down Artries(where blood travels) -> making it harder for flood to flow. Think of it as pinching a water hose
+3. Obesity causes changes in the blood vessels, kidneys, and other parts of the body according to MayoClinic
+4. Tobacco or Smoking can injure the blood vessels walls and speed of hardening of the arteries. 
+### Citation
+1. MayoClinic: https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410
+2. Hezam, Ali Ahmed Mohammed et al. “The connection between hypertension and diabetes and their role in heart and kidney disease development.” Journal of research in medical sciences : the official journal of Isfahan University of Medical Sciences vol. 29 22. 29 Apr. 2024, [doi:10.4103/jrms.jrms_470_23](https://pmc.ncbi.nlm.nih.gov/articles/PMC11162087/)
 ***
 ---
