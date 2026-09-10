@@ -16,7 +16,7 @@
 ---
 What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sugar(A1), Body Mass Index (BMI), Blood Pressure(BP), LDL Cholestrol, Non-HDL Cholestrol, and Tabacco Use)?
 
-## Blood Sugar (A1C)
+## Blood Sugar (A1C) <a id="A1C"></a>
 ***
 ### Basic Info:
 - Before we dive into the Analysis, lets first answer what A1C is? A1C is a blood test that provides information about your averaage levels of blood glucose, also called bloos sugar, over the past 3 months. It can be used to diagnose type 2 diabetes and prediabetics. **A Normal A1C level is below 5.7**.
@@ -44,7 +44,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 
 ***
-## Body Mass Index(BMI)
+## Body Mass Index(BMI) <a id="BMI"></a>
 ***
 ### Basic Info:
 - What is BMI? It is a measure to calculate the measure of weight relative to height
@@ -74,7 +74,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
         1. In 1976-1980 US government recommended Americans to reduce far consumptions, the food industry responded with more low-fat products,
         2. But from 1976-1980 to 1999-2000 show that the percentage of calories from fat decreased slightly, byut total energy intake increased, meaning overall amount of fat consumed likely stayed thge same or even rose slightly 
         3. Temple, Normal 3 reseach shows that these changes in dietary fat intake had little connection to the Obesity pandemic.
-    3. Ultra-Processed Foods (UPF):
+    3. **Ultra-Processed Foods (UPF):** <a id="upf"></a>
         1. Foods that are prepared with mostly cheap sources of dietary energy and nutrients plus additives.
         2. Mostly consists of high calories, salt, sugar, and fat but minimal amounts of whole foods. 
         3. They also have low content of dietary fiber, phytochemicals and various micronutrients such as vitamin C, magnesium, and potassium
@@ -88,7 +88,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 1. Temple, Norman J. “The Origins of the Obesity Epidemic in the USA-Lessons for Today.” Nutrients vol. 14,20 4253. 12 Oct. 2022, [doi:10.3390/nu14204253](https://pmc.ncbi.nlm.nih.gov/articles/PMC9611578/)
 ***
 
-## Blood Pressure(BP)
+## Blood Pressure(BP) <a id="BP"></a>
 ***
 ### Basic Info:
 - What is it? Blood Pressure is the force exerted by circulating blood agains the walls of the arteries
@@ -121,7 +121,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 ***
 
 ***
-## Tabocco Use:
+## Tabocco Use: <a id="tabacco"></a>
 
 ### Basic Info:
 1. What is it? According to National Cancer Institute, it is a plant with leaves that has high levels of a addcitive chemical called Nicotine 
@@ -141,7 +141,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 ***
 
 ***
-## LDL(Low Density Lipoprotein) cholestrol:
+## LDL(Low Density Lipoprotein) cholestrol:<a id="ldl"></a>
 
 ### Basic Info:
 1. Often referred as to "Bad Cholestrol", which itself isn't bad. It plays and important role in your body, but too much of it is bad. LDL are fat particles and protein that carry fats through your bloodstream.
@@ -155,7 +155,6 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |160-189| High LDL|
 |190 >| Very High LDL|
 4. Anything above 100 mg/dl raises your risks of cardiovascular disease.
-5. 
 
 ![alt text](img/Risk_Factor/LDL_Chol_All.png)
 ### What happend?
@@ -164,9 +163,47 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 ### Why it happend?
 1. According to Capewell, et al. The main reason for low LDL levels is due to Statins. 
-2. What is Statins? Statins are drugs that lower LDL in the blood. h
+2. What is Statins? Statins are drugs that lower LDL in the blood. 
 ### Citation
 1. Cleveland Clinic: https://my.clevelandclinic.org/health/articles/24391-ldl-cholesterol
 2. Capewell, Simon, and Earl S Ford. “Why have total cholesterol levels declined in most developed countries?.” BMC public health vol. 11 641. 11 Aug. 2011, [doi:10.1186/1471-2458-11-641](https://pmc.ncbi.nlm.nih.gov/articles/PMC3199603/#sec11)
 ***
+
+***
+## Non-HDL cholesterol:<a id="non-hdl"></a>
+
+### Basic Info: 
+1. Non-HDL cholestrol refers to all the cholesterol carried on particles other then High Density Lipoproteins (HDL). it captures the amount of "bad" cholesterol in your blood.
+2. These particles include. LDL, very-LDL, Intermediate-density lipoproteins, etc. 
+3. What causes them? Genetics, Diet(eating foods with trans-fat, saturated fat, and added sugar), Obesity, Using Tobacco, Not getting enough exercise. 
+
+|Non-HDL Levels(mg/dl)| Status|
+|---------------------|-------|
+|< 130 | Normal|
+|130 - 159| Elevated|
+|160 > | High 
+![alt text](img/Risk_Factor/Non-HDL_Chol_ALL.png)
+## What happend?
+1. **2004**
+    1. The Non-HDL levles were at a all time high **46% of the population had high levels of Non-HDL** and **26% of them had Elevated levels of Non-HDL**. 
+2. **2004-2023**
+    1. As the time went on **The high levels of Non-HDL decreased drastically from 46% to 10%** and **Normal Levels rose from 30% to 50%** while **Elevated levels stayed about the same only slight increase from 26% to 29%**
+
+## Why has this happend?
+1. Non-HDL levels are linked to LDL(Mostly), Obesity, and Tobacco use. From the trends above we can see the LDL and Tobacco uses decresed drastically, while obesity only increased slightly. Hence the drastic decrease of Non-HDL levels. 
+## Citation:
+Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholesterol
+***
+
+
+# How can we reduce diabetes?
+1. Reducation or Regulations agains UPF(Ultra Processed Food):
+    1. Why?: 
+        1. UPF currently plays a major role or even the leading cause in the obesity pandemic. 
+        2. Obesity causes Non-HDL, high blood sugar, LDL, and High blood pressure. 
+        3. UPF food provide minimal nutrients, while pumped so calories, sugar, sodium, and fats. [Jump To this for more information](#upf)
+    2. What should we do?
+        1. Force manufacturers to reduce the amount of calories, sugar, sodium, and fats that can be added to the food propotion to its portions and add more nutrients. 
+        2. Make healthy alternatives cheaper. 
+        3. Educate the general population about the harms to eating UPF, [similar to what they did to smoking](#tabacco). 
 ---
