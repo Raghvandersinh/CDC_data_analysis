@@ -14,5 +14,8 @@
             "attached": true
         }
     ],
-    "duckdb.defaultDatabase": "di_db"
+    "duckdb.defaultDatabase": "di_db",
+    "cSpell.words": [
+        "Prediabetics"
+    ]
 }
