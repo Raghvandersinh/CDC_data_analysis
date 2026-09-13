@@ -1,6 +1,4 @@
-# Diabetes Indicator Report
-
----
+# <h1 align="center"> Diabetes Indicator Report</h1>
 1. Where did I get this data?
     - This data is based off of the CDC United States Diabetes Surveillance System. Which tracks information regrading Diabetes in the US population at national, state, and county levels. 
     In this report I will analyze the USDSS National Other Diabetes Indicator API data, to find trends and findings. 
@@ -10,14 +8,12 @@
     - Insulin is a hormone made by the pancreas that helps glucose get into your cells to be used for energy. **If you have Diabetes, your body doesn't make enough - or any - insulin**, the glucose will just stay in your blood and not reach the cells. 
 3. Citation:
     Cleveland Clinic: https://my.clevelandclinic.org/health/diseases/7104-diabetes
-# Analysis
----
-# Diabetes Risk Factor for Complication? 
----
+# <h1 align="center"> Analysis</h1>
+# <h1 align="center">Diabetes Risk Factor for Complication: </h1>
 What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sugar(A1), Body Mass Index (BMI), Blood Pressure(BP), LDL Cholesterol, Non-HDL Cholesterol, and Tobacco Use)?
 
-## Blood Sugar (A1C) <a id="A1C"></a>
-***
+## <h2 align="center"> Blood Sugar (A1C) <a id="A1C"></a></h2>
+
 ### Basic Info:
 - Before we dive into the Analysis, lets first answer what A1C is? A1C is a blood test that provides information about your average levels of blood glucose, also called blood sugar, over the past 3 months. It can be used to diagnose type 2 diabetes and prediabetics. **A Normal A1C level is below 5.7**.
 
@@ -28,7 +24,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |Diabetes| 6.5 percent or above|
 
 ![alt text](img/Risk_Factor/Blood_Sugar_All.png)
-### What Happend?
+### What Happened?
 
 - As we can see from the chart, the Blood Sugar relatively level was low in diabetic people. But as time went on(especially in 2023) **the Blood Sugar level A1C > 9 in diabetic people soared up high from 17% in 2004 to 31% in 2023 almost doubling** and **the Blood Sugar level A1C < 6.0 almost halved from 22% in 2003 to 14% in 2023**.  
 
@@ -39,13 +35,12 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
         2. Dietary shift towards more processed foods with higher calories. 
 
 ### Citation:
-    1. Kim, Sun H et al. “New-Onset Diabetes After COVID-19.” The Journal of clinical endocrinology and metabolism vol. 108,11 (2023): e1164-e1174. (https://pmc.ncbi.nlm.nih.gov/articles/PMC11009784/)
-    2. diabetesfreesc.org "Understanding Your A1C Level and How It Can Help Manage Diabetes" https://www.diabetesfreesc.org/news/understanding-your-a1c-level-and-how-it-can-help-manage-diabetes
+1. Kim, Sun H et al. “New-Onset Diabetes After COVID-19.” The Journal of clinical endocrinology and metabolism vol. 108,11 (2023): e1164-e1174. [doi:10.1210/clinem/dgad284](https://pmc.ncbi.nlm.nih.gov/articles/PMC11009784/)
+2. diabetesfreesc.org "Understanding Your A1C Level and How It Can Help Manage Diabetes" https://www.diabetesfreesc.org/news/understanding-your-a1c-level-and-how-it-can-help-manage-diabetes
 
 
-***
-## Body Mass Index(BMI) <a id="BMI"></a>
-***
+## <h2 align="center"> Body Mass Index(BMI) <a id="BMI"></a></h2>
+
 ### Basic Info:
 - What is BMI? It is a measure to calculate the measure of weight relative to height
 - Why does BMI matter? If you have a BMI > 30 you are considered obese, having fat can cause you to have insulin resistance, due to you pancreas being wearing out by keeping blood sugar levels in range. 
@@ -60,7 +55,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 ![alt text](img/Risk_Factor/BMI_All.png)
 
-### What happend?
+### What Happened?
 1. **2004 - 2023**
     1. As we can see from the the trend. **Obesity and overweight were both high in 2004 and 2023 respectively. However, obesity continued increasing from 2004 to 2023**. 
 
@@ -86,10 +81,9 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 ### Citation:
 1. Temple, Norman J. “The Origins of the Obesity Epidemic in the USA-Lessons for Today.” Nutrients vol. 14,20 4253. 12 Oct. 2022, [doi:10.3390/nu14204253](https://pmc.ncbi.nlm.nih.gov/articles/PMC9611578/)
-***
 
-## Blood Pressure(BP) <a id="BP"></a>
-***
+## <h2 align="center"> Blood Pressure(BP) <a id="BP"></a></h2>
+
 ### Basic Info:
 - What is it? Blood Pressure is the force exerted by circulating blood against the walls of the arteries
 - What can happen? High blood pressure can lead to risks of a Stroke and Heart Attack
@@ -109,7 +103,7 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 ![alt text](img/Risk_Factor/BP_All.png)
 
-### What happend?
+### What Happened?
 1. **2004-2023**
     1. From the consistent trend from 2004-2023 we can see that, 30-39% of AWD have normal Blood Pressure, But about 40-50% of AWD have Stage 1 High Blood Pressure.
 
@@ -118,30 +112,27 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 ### Citation
 1. MayoClinic: https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410
 2. Hezam, Ali Ahmed Mohammed et al. “The connection between hypertension and diabetes and their role in heart and kidney disease development.” Journal of research in medical sciences : the official journal of Isfahan University of Medical Sciences vol. 29 22. 29 Apr. 2024, [doi:10.4103/jrms.jrms_470_23](https://pmc.ncbi.nlm.nih.gov/articles/PMC11162087/)
-***
 
-***
-## Tabocco Use: <a id="tabacco"></a>
+## <h2 align="center"> Tabocco Use: <a id="tabacco"></a></h2>
 
 ### Basic Info:
 1. What is it? According to National Cancer Institute, it is a plant with leaves that has high levels of a addictive chemical called Nicotine 
 ![alt text](img/Risk_Factor/Tabacco_All.png)
 
-### What happend?
+### What Happened?
 1. **2004-2023**:
     1. As we can see from the dashboard above. The use of Tobacco in diabetic adults **decreased from 35% in 2004 to 24% in 2023**. Why is that
 
-### Why has that happend?
+### Why has that Happened?
 1. According to Cummings, K Micheal, during 1964, smoking was permitted nearly everywhere in the US, you could smoke in bars, restaurants, buses, trains, planes, and even hospitals and school buildings. In 1967 FTC(Federal Trade Commission) reported that it was "impossible for Americans of almost any age to avoid cigarette advertising”.
 2. Then Policies and Regulations for tobacco control came by implementing "...smoke-free policies, hiking cigarette taxes, and adopting policies to discourage smoking by young people.". Due to its health risks, addictive nature, and potential to cause fire hazards. 
 ### Citation
 1. Cummings, K Michael. “Smoking Isn't Cool Anymore: The Success and Continuing Challenge of Public Health Efforts to Reduce Smoking.” Journal of public health management and practice : JPHMP vol. 22,1 (2016): 5-8. [doi:10.1097/PHH.0000000000000360](https://pmc.ncbi.nlm.nih.gov/articles/PMC4662068/)
 2. Cole, Helene M, and Michael C Fiore. “The war against tobacco: 50 years and counting.” JAMA vol. 311,2 (2014): 131-2. [doi:10.1001/jama.2013.280767](https://pmc.ncbi.nlm.nih.gov/articles/PMC4465196/)
 3. National Cancer Institute. "Tobacco". https://www.cancer.gov/publications/dictionaries/cancer-terms/def/tobacco
-***
 
-***
-## LDL(Low Density Lipoprotein) cholestrol:<a id="ldl"></a>
+
+## <h2 align="center"> LDL(Low Density Lipoprotein) cholestrol:<a id="ldl"></a></h2>
 
 ### Basic Info:
 1. Often referred as to "Bad Cholesterol", which itself isn't bad. It plays and important role in your body, but too much of it is bad. LDL are fat particles and protein that carry fats through your bloodstream.
@@ -157,20 +148,18 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 4. Anything above 100 mg/dl raises your risks of cardiovascular disease.
 
 ![alt text](img/Risk_Factor/LDL_Chol_All.png)
-### What happend?
+### What Happened?
 1. **2004-2023**:
     1. The data is rather incomplete, but from what we can see is that the rate of **Elevated LDL** is relatively the same, But there has been a rise of **Normal LDL** Levels From 37% in 2004 to 50% in 2023. 
 
-### Why it happend?
+### Why it Happened?
 1. According to Capewell, et al. The main reason for low LDL levels is due to Statins. 
 2. What is Statins? Statins are drugs that lower LDL in the blood. 
 ### Citation
 1. Cleveland Clinic: https://my.clevelandclinic.org/health/articles/24391-ldl-cholesterol
 2. Capewell, Simon, and Earl S Ford. “Why have total cholesterol levels declined in most developed countries?.” BMC public health vol. 11 641. 11 Aug. 2011, [doi:10.1186/1471-2458-11-641](https://pmc.ncbi.nlm.nih.gov/articles/PMC3199603/#sec11)
-***
 
-***
-## Non-HDL cholesterol:<a id="non-hdl"></a>
+## <h2 align="center"> Non-HDL cholesterol:<a id="non-hdl"></a></h2>
 
 ### Basic Info: 
 1. Non-HDL cholesterol refers to all the cholesterol carried on particles other then High Density Lipoproteins (HDL). it captures the amount of "bad" cholesterol in your blood.
@@ -183,20 +172,29 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |130 - 159| Elevated|
 |160 > | High 
 ![alt text](img/Risk_Factor/Non-HDL_Chol_ALL.png)
-## What happend?
+### What Happened?
 1. **2004**
     1. The Non-HDL levels were at a all time high **46% of the population had high levels of Non-HDL** and **26% of them had Elevated levels of Non-HDL**. 
 2. **2004-2023**
     1. As the time went on **The high levels of Non-HDL decreased drastically from 46% to 10%** and **Normal Levels rose from 30% to 50%** while **Elevated levels stayed about the same only slight increase from 26% to 29%**
 
-## Why has this happend?
+### Why has this Happened?
 1. Non-HDL levels are linked to LDL(Mostly), Obesity, and Tobacco use. From the trends above we can see the LDL and Tobacco uses decreased drastically, while obesity only increased slightly. Hence the drastic decrease of Non-HDL levels. 
-## Citation:
+### Citation:
 Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholesterol
-***
 
+## <h2 align="center"> Diabetes based on Mental Health and Disability:</h2>
+![alt text](img/Mental_and_Disability/All_Pop_MHD.png)
 
-# How can we reduce diabetes?
+### What Happened?
+1. As we can see, by a mile the leading cause of diabetes in AWD is the lack of mobility(due to disability), while the reason for diabetes for vision impairment, depression and anxiety disorder are approximately the same.  
+
+### Why did this Happen?
+1. 
+
+### Citation:
+1. [Scott J. Pilla, MD, MHS, Mary R. Rooney, PhD, MPH, and Rozalina G. McCoy, MD, MS. "Disability and Diabetes in Adult](https://www.ncbi.nlm.nih.gov/books/NBK609951/)s". 
+# <h1 align="center"> How can we reduce diabetes?</h1>
 1. Reduction or Regulations against UPF(Ultra Processed Food):
     1. Why?: 
         1. UPF currently plays a major role or even the leading cause in the obesity pandemic. 
@@ -204,6 +202,5 @@ Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholest
         3. UPF food provide minimal nutrients, while pumped so calories, sugar, sodium, and fats. [Jump To this for more information](#upf)
     2. What should we do?
         1. Force manufacturers to reduce the amount of calories, sugar, sodium, and fats that can be added to the food proportion to its portions and add more nutrients. 
-        2. Make healthy alternatives cheaper. One of the leading cause of why americans buy UPF is because the nutrition foods are  
+        2. Make healthy alternatives cheaper. One of the leading cause of why americans buy UPF is because the nutrition foods more expensive then UPF 
         3. Educate the general population about the harms to eating UPF, [similar to what they did to smoking](#tabacco). 
----
