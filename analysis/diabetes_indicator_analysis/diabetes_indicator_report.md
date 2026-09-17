@@ -24,11 +24,11 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |Diabetes| 6.5 percent or above|
 
 ![alt text](img/Risk_Factor/Blood_Sugar_All.png)
-### What Happened?
+### What level of A1C do population of AWD have?
 
 - As we can see from the chart, the Blood Sugar relatively level was low in diabetic people. But as time went on(especially in 2023) **the Blood Sugar level A1C > 9 in diabetic people soared up high from 17% in 2004 to 31% in 2023 almost doubling** and **the Blood Sugar level A1C < 6.0 almost halved from 22% in 2003 to 14% in 2023**.  
 
-### Why did this happen?
+### Why do AWD have high A1C?
 - Though we can't answer this question provided by the USDSS data. We can make some speculations.
     1. The sudden soaring of A1C > 9 from 2004 to 2023, could link to: 
         1. The Covid Pandemic where majority of the population mostly lived indoors and most likely doing many physical activities, such as going to gyms or running outside. Also Covid-19 could possibly cause diabetes according to Sun H et al. 
@@ -55,11 +55,11 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 ![alt text](img/Risk_Factor/BMI_All.png)
 
-### What Happened?
+### What is BMI of AWD?
 1. **2004 - 2023**
     1. As we can see from the the trend. **Obesity and overweight were both high in 2004 and 2023 respectively. However, obesity continued increasing from 2004 to 2023**. 
 
-### Why did this happen?
+### Why do AWD have high BMI?
 1. According to Temple, Norman the obesity epidemic appeared in the USA in 1976-1980.
 2. But why did this obesity epidemic started?
     1. Sugar intake:
@@ -89,8 +89,6 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 - What can happen? High blood pressure can lead to risks of a Stroke and Heart Attack
 - High blood pressure(Hypertension) and diabetes are two common metabolic disorders that often coexist in the same individual. Combination of both can lead to risks of Heart Disease and Strokes. 
 - High Blood Sugar > Wears Down Arteries(where blood travels) -> making it harder for flood to flow. Think of it as pinching a water hose
-- Obesity causes changes in the blood vessels, kidneys, and other parts of the body according to MayoClinic
-- Tobacco or Smoking can injure the blood vessels walls and speed of hardening of the arteries. 
 
 |Levels|SBP|
 |------|---|
@@ -103,12 +101,13 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 
 ![alt text](img/Risk_Factor/BP_All.png)
 
-### What Happened?
+### What level of BP does population of AWD have?
 1. **2004-2023**
     1. From the consistent trend from 2004-2023 we can see that, 30-39% of AWD have normal Blood Pressure, But about 40-50% of AWD have Stage 1 High Blood Pressure.
 
-### Why does this happen?
-
+### Why do AWD have high blood pressure?
+1. Obesity causes changes in the blood vessels, kidneys, and other parts of the body according to MayoClinic
+2. Tobacco or Smoking can injure the blood vessels walls and speed of hardening of the arteries. 
 ### Citation
 1. MayoClinic: https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410
 2. Hezam, Ali Ahmed Mohammed et al. “The connection between hypertension and diabetes and their role in heart and kidney disease development.” Journal of research in medical sciences : the official journal of Isfahan University of Medical Sciences vol. 29 22. 29 Apr. 2024, [doi:10.4103/jrms.jrms_470_23](https://pmc.ncbi.nlm.nih.gov/articles/PMC11162087/)
@@ -119,11 +118,11 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 1. What is it? According to National Cancer Institute, it is a plant with leaves that has high levels of a addictive chemical called Nicotine 
 ![alt text](img/Risk_Factor/Tabacco_All.png)
 
-### What Happened?
+### What population of AWD uses Tobacco?
 1. **2004-2023**:
     1. As we can see from the dashboard above. The use of Tobacco in diabetic adults **decreased from 35% in 2004 to 24% in 2023**. Why is that
 
-### Why has that Happened?
+### Why has use of Tobacco decreased in AWD?
 1. According to Cummings, K Micheal, during 1964, smoking was permitted nearly everywhere in the US, you could smoke in bars, restaurants, buses, trains, planes, and even hospitals and school buildings. In 1967 FTC(Federal Trade Commission) reported that it was "impossible for Americans of almost any age to avoid cigarette advertising”.
 2. Then Policies and Regulations for tobacco control came by implementing "...smoke-free policies, hiking cigarette taxes, and adopting policies to discourage smoking by young people.". Due to its health risks, addictive nature, and potential to cause fire hazards. 
 ### Citation
@@ -148,11 +147,11 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 4. Anything above 100 mg/dl raises your risks of cardiovascular disease.
 
 ![alt text](img/Risk_Factor/LDL_Chol_All.png)
-### What Happened?
+### What level of LDL does population of AWD have?
 1. **2004-2023**:
     1. The data is rather incomplete, but from what we can see is that the rate of **Elevated LDL** is relatively the same, But there has been a rise of **Normal LDL** Levels From 37% in 2004 to 50% in 2023. 
 
-### Why it Happened?
+### Why has the LDL level decreased in AWD?
 1. According to Capewell, et al. The main reason for low LDL levels is due to Statins. 
 2. What is Statins? Statins are drugs that lower LDL in the blood. 
 ### Citation
@@ -172,29 +171,32 @@ What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sug
 |130 - 159| Elevated|
 |160 > | High 
 ![alt text](img/Risk_Factor/Non-HDL_Chol_ALL.png)
-### What Happened?
+### What level of Non-HDL does population AWD have?
 1. **2004**
     1. The Non-HDL levels were at a all time high **46% of the population had high levels of Non-HDL** and **26% of them had Elevated levels of Non-HDL**. 
 2. **2004-2023**
     1. As the time went on **The high levels of Non-HDL decreased drastically from 46% to 10%** and **Normal Levels rose from 30% to 50%** while **Elevated levels stayed about the same only slight increase from 26% to 29%**
 
-### Why has this Happened?
+### Why has Non-HDL levels decreased in AWD?
 1. Non-HDL levels are linked to LDL(Mostly), Obesity, and Tobacco use. From the trends above we can see the LDL and Tobacco uses decreased drastically, while obesity only increased slightly. Hence the drastic decrease of Non-HDL levels. 
 ### Citation:
 Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholesterol
 
-## <h2 align="center"> Diabetes based on Mental Health and Disability:</h2>
+## <h2 align="center"> Diabetes based on Mental Health and Disability:<a id="MHD"></a></h2>
 ![alt text](img/Mental_and_Disability/All_Pop_MHD.png)
 
-### What Happened?
-1. As we can see, by a mile the leading cause of diabetes in AWD is the lack of mobility(due to disability), while the reason for diabetes for vision impairment, depression and anxiety disorder are approximately the same.  
+### What is the leading risk based on Mental Health and Disability?
+1. As we can see, by a mile the leading cause of diabetes in AWD is the **lack of mobility(due to disability)**, while the reason for diabetes for **vision impairment, depression and anxiety disorder** are approximately the same.  
 
-### Why did this Happen?
-1. 
-
+### Why is lack of mobility the leading cause diabetes in AWD?
+1. According to Yaribeygi et al, the modern lifestyle has a negative impact, due to low physical activities and sedentary lifestyle and it has been shown that sedentary lifestyle increases the risk of insulin. 
+2. Physical inactivity causes Beta cells' insufficiency, Dyslipidemia & obesity, Oxidative damages, Mitochondrial dysfunction, Inflammation, Sex steroids, lower Capilarization and increased Ceramide synthesis, which is a possible links to cause Insulin resistance. 
 ### Citation:
-1. [Scott J. Pilla, MD, MHS, Mary R. Rooney, PhD, MPH, and Rozalina G. McCoy, MD, MS. "Disability and Diabetes in Adult](https://www.ncbi.nlm.nih.gov/books/NBK609951/)s". 
-# <h1 align="center"> How can we reduce diabetes?</h1>
+1. Yaribeygi, Habib et al. “Pathophysiology of Physical Inactivity-Dependent Insulin Resistance: A Theoretical Mechanistic Review Emphasizing Clinical Evidence.” Journal of diabetes research vol. 2021 7796727. 7 Oct. 2021, [doi:10.1155/2021/7796727](https://pmc.ncbi.nlm.nih.gov/articles/PMC8516544/)
+2. [Scott J. Pilla, MD, MHS, Mary R. Rooney, PhD, MPH, and Rozalina G. McCoy, MD, MS. "Disability and Diabetes in Adult](https://www.ncbi.nlm.nih.gov/books/NBK609951/)s". 
+
+
+# <h1 align="center"> How can we reduce diabetes based on the information provided by Diabetes Risk Factor Complications?</h1>
 1. Reduction or Regulations against UPF(Ultra Processed Food):
     1. Why?: 
         1. UPF currently plays a major role or even the leading cause in the obesity pandemic. 
@@ -204,3 +206,9 @@ Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholest
         1. Force manufacturers to reduce the amount of calories, sugar, sodium, and fats that can be added to the food proportion to its portions and add more nutrients. 
         2. Make healthy alternatives cheaper. One of the leading cause of why americans buy UPF is because the nutrition foods more expensive then UPF 
         3. Educate the general population about the harms to eating UPF, [similar to what they did to smoking](#tabacco). 
+2. Exercising:
+    1. Why?
+        1. One of the leading cause of diabetes is the lack of movement. [~30 million AWD lack the ability move.](#mhd)
+        2. The modern lifestyle are Sedentary(lifestyle where you spend most of your time sitting)    
+    2. What should we do?
+        1. This is something on the individual, but spending 10-15 mins everyday doing cardiovascular exercise can make the biggest difference. 
