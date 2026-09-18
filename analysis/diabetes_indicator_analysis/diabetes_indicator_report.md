@@ -209,6 +209,29 @@ Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholest
 2. Exercising:
     1. Why?
         1. One of the leading cause of diabetes is the lack of movement. [~30 million AWD lack the ability move.](#mhd)
-        2. The modern lifestyle are Sedentary(lifestyle where you spend most of your time sitting)    
+        2. The modern lifestyle are Sedentary(lifestyle where you spend most of your time sitting) resulting in the lack of movement     
     2. What should we do?
         1. This is something on the individual, but spending 10-15 mins everyday doing cardiovascular exercise can make the biggest difference. 
+
+# <h1 align="center">Diabetic Medication used in AWD</h1>
+
+## Basic information about Diabetic Medications:
+1. According to American Diabetes Association there are two types of Diabetic Medications(For Type 2 Diabetes, this data consists 90-95% type 2 diabetics):
+    1. Oral(Pills)
+        1. Metformin: lowers blood sugar levels by reducing sugar produced by liver
+        2. DPP-4 Inhibitors lowers blood sugar levels without causing low blood sugar, works by breaking down naturally occurring hormones in the body. 
+        3. SGLT2 Inhibitors lowers blood sugar levels, some weight loss, and lowers blood pressure; By making the glucose pass through kidneys instead of the blood stream and it can either be excreted by urinating or reabsorbed back into the blood. 
+    2. Injectable(Insulin):
+        1. Rapid-acting Insulin: starts works 5-20 mins after injecting, then lasts for 3-5 hours
+        2. Regular Insulin: starts to work in 30-45 mins after injecting, then lasts for 5-8 hours. 
+    3. Both
+        1. GLP-1 and Dual GLP-1/GIP Receptor Agonists Lowers Blood Sugar and Body Weight: GLP-1 and GIP are hormones in the body that help maintain glucose levels, so the goal is to inject these hormones to use them. 
+## What are the most used Diabetic Medication in AWD?
+![alt text](img/Diabetic_Medition_Used/Diabetic_Medication_Used.png)
+
+1. By a mile, most AWD use **Pills Only**, while **Insulin Only**, **Insulin and Pills**, and **No Medications** are relatively the same. 
+2. The trend of using **Pills Only** increase drastically from **~15 million** in 2000 to **~30 million** in 2024. 
+
+## Citation:
+1. American Diabetes Association, "Oral & Injectable Medications for Type 2 Diabetes", https://diabetes.org/health-wellness/medication/oral-other-injectable-diabetes-medications
+
