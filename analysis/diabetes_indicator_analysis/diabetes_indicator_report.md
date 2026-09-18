@@ -230,8 +230,8 @@ Cleveland Clinic: https://my.clevelandclinic.org/health/articles/non-hdl-cholest
 ![alt text](img/Diabetic_Medition_Used/Diabetic_Medication_Used.png)
 
 1. By a mile, most AWD use **Pills Only**, while **Insulin Only**, **Insulin and Pills**, and **No Medications** are relatively the same. 
-2. The trend of using **Pills Only** increase drastically from **~15 million** in 2000 to **~30 million** in 2024. 
+2. The trend of using,  **Pills Only** increase drastically from **~15 million** in 2000 to **~30 million** in 2024. 
 
 ## Citation:
 1. American Diabetes Association, "Oral & Injectable Medications for Type 2 Diabetes", https://diabetes.org/health-wellness/medication/oral-other-injectable-diabetes-medications
-
+2. Cleveland Clinic, "Insulin", https://my.clevelandclinic.org/health/body/22601-insulin
