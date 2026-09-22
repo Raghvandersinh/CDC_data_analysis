@@ -56,6 +56,7 @@ class Stroke_Mortality(Base):
     sex: Mapped[Optional[str]] = mapped_column(nullable=True)
     race: Mapped[Optional[str]] = mapped_column(nullable=True)
     fips: Mapped[Optional[str]] = mapped_column(nullable=True)
+    topic: Mapped[Optional[str]] = mapped_column(nullable=True)
 
     def __repr__(self) -> str:
         return f"stroke_mortality(id={self.id!r},year={self.year!r},state={self.state!r},location={self.location!r},geo_level={self.geo_level!r},rate={self.rate!r},sex={self.sex!r},race={self.race!r},fips={self.fips!r})"

@@ -129,7 +129,8 @@ def transform_single_stroke_mortality(endpoint_data, endpoint_id = None):
                 'value': clean_value,
                 'rate':endpoint_data.get('data_value_unit'),
                 'race': endpoint_data.get('stratification2'),
-                'fips':endpoint_data.get('locationid')
+                'fips':endpoint_data.get('locationid'),
+                'topic': endpoint_data.get('topic')
         }
         if endpoint_id == '7b9s-s8ck':
             # For this endpoint, sex is in stratification3
@@ -430,9 +431,9 @@ if __name__ == '__main__':
     logger.info("Starting script")
     logger.info("Initializing ETL pipeline...")
     
-    table = "diabetes_ind"
+    table = "stroke_mortality"
     base_url = 'https://data.cdc.gov/api/v3/views/'
     endpoints = get_endpoint(key_target=table)
     etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=50000, 
-                 transform_data=transform_endpoint_data, transform_single_func=transform_single_diabetes_ind, table=table, max_page=None)
+                 transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=None)
     

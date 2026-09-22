@@ -31,3 +31,5 @@
 1. Diabetes based on Risk Factors?
 2. Most commonly used diabetic medication?
 3. Cause of Diabetes based on mental health and disability?
+
+1. We will only focus on **Diabetes based on Risk Factors?** and answer the question on **How we can prevent or Reduce Diabetes?**
