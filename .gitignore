@@ -8,3 +8,4 @@ di_db.duckdb
 true_number_estimate.csv
 data
 Cdc_Analysis.pbix
+sm_db.duckdb
