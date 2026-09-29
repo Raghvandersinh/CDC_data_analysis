@@ -24,5 +24,6 @@
     "duckdb.defaultDatabase": "di_db",
     "cSpell.words": [
         "Prediabetics"
-    ]
+    ],
+    "markdown.extension.toc.levels": "1..6"
 }

@@ -1,4 +1,4 @@
-# <h1 align="center"> Diabetes Indicator Report</h1>
+# <h1 align="center"> Diabetes Risk Factor for Complication Analysis</h1>
 1. Where did I get this data?
     - This data is based off of the CDC United States Diabetes Surveillance System. Which tracks information regrading Diabetes in the US population at national, state, and county levels. 
     In this report I will analyze the USDSS National Other Diabetes Indicator API data, to find trends and findings. 
@@ -8,9 +8,50 @@
     - Insulin is a hormone made by the pancreas that helps glucose get into your cells to be used for energy. **If you have Diabetes, your body doesn't make enough - or any - insulin**, the glucose will just stay in your blood and not reach the cells. 
 3. Citation:
     Cleveland Clinic: https://my.clevelandclinic.org/health/diseases/7104-diabetes
-# <h1 align="center"> Analysis</h1>
-# <h1 align="center">Diabetes Risk Factor for Complication: </h1>
-What group of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sugar(A1), Body Mass Index (BMI), Blood Pressure(BP), LDL Cholesterol, Non-HDL Cholesterol, and Tobacco Use)?
+
+## Tables of Contents:
+- [ Diabetes Risk Factor for Complication Analysis](#-diabetes-risk-factor-for-complication-analysis)
+  - [Tables of Contents:](#tables-of-contents)
+  - [ Analysis](#-analysis)
+  - [ Blood Sugar (A1C) ](#-blood-sugar-a1c-)
+    - [Basic Info:](#basic-info)
+    - [What level of A1C do population of AWD have?](#what-level-of-a1c-do-population-of-awd-have)
+    - [Why do AWD have high A1C?](#why-do-awd-have-high-a1c)
+    - [Citation:](#citation)
+  - [ Body Mass Index(BMI) ](#-body-mass-indexbmi-)
+    - [Basic Info:](#basic-info-1)
+    - [What is BMI of AWD?](#what-is-bmi-of-awd)
+    - [Why do AWD have high BMI?](#why-do-awd-have-high-bmi)
+    - [Citation:](#citation-1)
+  - [ Blood Pressure(BP) ](#-blood-pressurebp-)
+    - [Basic Info:](#basic-info-2)
+    - [What level of BP does population of AWD have?](#what-level-of-bp-does-population-of-awd-have)
+    - [Why do AWD have high blood pressure?](#why-do-awd-have-high-blood-pressure)
+    - [Citation](#citation-2)
+  - [ Tabocco Use: ](#-tabocco-use-)
+    - [Basic Info:](#basic-info-3)
+    - [What population of AWD uses Tobacco?](#what-population-of-awd-uses-tobacco)
+    - [Why has use of Tobacco decreased in AWD?](#why-has-use-of-tobacco-decreased-in-awd)
+    - [Citation](#citation-3)
+  - [ LDL(Low Density Lipoprotein) cholestrol:](#-ldllow-density-lipoprotein-cholestrol)
+    - [Basic Info:](#basic-info-4)
+    - [What level of LDL does population of AWD have?](#what-level-of-ldl-does-population-of-awd-have)
+    - [Why has the LDL level decreased in AWD?](#why-has-the-ldl-level-decreased-in-awd)
+    - [Citation](#citation-4)
+  - [ Non-HDL cholesterol:](#-non-hdl-cholesterol)
+    - [Basic Info:](#basic-info-5)
+    - [What level of Non-HDL does population AWD have?](#what-level-of-non-hdl-does-population-awd-have)
+    - [Why has Non-HDL levels decreased in AWD?](#why-has-non-hdl-levels-decreased-in-awd)
+    - [Citation:](#citation-5)
+  - [ Diabetes based on Mental Health and Disability:](#-diabetes-based-on-mental-health-and-disability)
+    - [What is the leading risk based on Mental Health and Disability?](#what-is-the-leading-risk-based-on-mental-health-and-disability)
+    - [Why is lack of mobility the leading cause diabetes in AWD?](#why-is-lack-of-mobility-the-leading-cause-diabetes-in-awd)
+    - [Citation:](#citation-6)
+- [ How can we reduce diabetes based on the information provided by Diabetes Risk Factor Complications?](#-how-can-we-reduce-diabetes-based-on-the-information-provided-by-diabetes-risk-factor-complications)
+
+
+## <h1 align="center"> Analysis</h1>
+- Analyzing trends of **Adults 18+ with Diabetes(AWD)** for each risk factors (Blood Sugar(A1), Body Mass Index (BMI), Blood Pressure(BP), LDL Cholesterol, Non-HDL Cholesterol, and Tobacco Use) to find the leading cause of diabetes? Then provide solution to decrease the rate of diabetes among the AWD. 
 
 ## <h2 align="center"> Blood Sugar (A1C) <a id="A1C"></a></h2>
 
