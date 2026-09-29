@@ -19,5 +19,4 @@ SELECT DISTINCT state FROM sm_db.stroke_mortality;
 SELECT COUNT(state) FROM sm_db.stroke_mortality
 where state = 'NJ';
 
-SELECT * FROM sm_db.stroke_mortality
-WHERE year = '2023';
+SELECT * FROM sm_db.stroke_mortality;
