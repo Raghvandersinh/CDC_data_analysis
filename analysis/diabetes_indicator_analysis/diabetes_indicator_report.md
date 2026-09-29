@@ -153,7 +153,7 @@
 1. MayoClinic: https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410
 2. Hezam, Ali Ahmed Mohammed et al. “The connection between hypertension and diabetes and their role in heart and kidney disease development.” Journal of research in medical sciences : the official journal of Isfahan University of Medical Sciences vol. 29 22. 29 Apr. 2024, [doi:10.4103/jrms.jrms_470_23](https://pmc.ncbi.nlm.nih.gov/articles/PMC11162087/)
 
-## <h2 align="center"> Tabocco Use: <a id="tabacco"></a></h2>
+## <h2 align="center"> Tabocco Use: <a id="tabocco"></a></h2>
 
 ### Basic Info:
 1. What is it? According to National Cancer Institute, it is a plant with leaves that has high levels of a addictive chemical called Nicotine 
