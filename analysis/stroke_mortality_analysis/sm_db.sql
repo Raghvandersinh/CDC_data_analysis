@@ -20,3 +20,8 @@ SELECT COUNT(state) FROM sm_db.stroke_mortality
 where state = 'NJ';
 
 SELECT * FROM sm_db.stroke_mortality;
+
+COPY(
+SELECT * FROM sm_db.stroke_mortality
+WHERE state = 'NJ' AND geo_level = 'County' AND value IS NOT NULL
+) TO 'analysis/stroke_mortality_analysis/NJ_stroke_mortality.csv' (HEADER, DELIMITER ',');
