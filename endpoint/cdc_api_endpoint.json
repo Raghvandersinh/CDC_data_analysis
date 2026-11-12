@@ -1,4 +1,5 @@
 {    
     "diabetes_ind": ["73uh-igb7/query.json"],
-    "stroke_mortality": ["7b9s-s8ck/query.json","vutr-sfkh/query.json","y5ii-knwc/query.json"]
+    "stroke_mortality": ["7b9s-s8ck/query.json?query=SELECT%0A%20%20%60year%60%2C%0A%20%20%60locationabbr%60%2C%0A%20%20%60locationdesc%60%2C%0A%20%20%60geographiclevel%60%2C%0A%20%20%60datasource%60%2C%0A%20%20%60class%60%2C%0A%20%20%60topic%60%2C%0A%20%20%60data_value%60%2C%0A%20%20%60data_value_unit%60%2C%0A%20%20%60data_value_type%60%2C%0A%20%20%60data_value_footnote_symbol%60%2C%0A%20%20%60data_value_footnote%60%2C%0A%20%20%60confidence_limit_low%60%2C%0A%20%20%60confidence_limit_high%60%2C%0A%20%20%60stratificationcategory1%60%2C%0A%20%20%60stratification1%60%2C%0A%20%20%60stratificationcategory2%60%2C%0A%20%20%60stratification2%60%2C%0A%20%20%60stratificationcategory3%60%2C%0A%20%20%60stratification3%60%2C%0A%20%20%60locationid%60%0AWHERE%0A%20%20caseless_eq(%60locationabbr%60%2C%20%22NJ%22)%0A%20%20AND%20caseless_eq(%60stratification1%60%2C%20%22Ages%2035-64%20years%22)%0A%20%20AND%20caseless_ne(%60data_value%60%2C%20%22NA%22)",
+    "vutr-sfkh/query.json","y5ii-knwc/query.json"]
 }

@@ -18,7 +18,22 @@ import os
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
 load_dotenv()
 
-engine = create_engine(os.getenv('DATABASE_URL_SCHEMA'),
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt= '%Y-%m-%d %H:%M:%S')
+logger = logging.getLogger(__name__)
+logging.info('info')
+logging.debug('debug')
+logging.warning('warning')
+logging.error('error')
+logging.critical("critical")
+
+
+CDC_API_KEY = os.getenv("CDC_API_KEY")
+if not CDC_API_KEY:
+    logger.warning("CDC_API_KEY not found in environment — SODA v3 requests will likely return 403")
+engine = create_engine(os.getenv('DATABASE_URL'),
                        pool_size=10,
                        max_overflow=20,
                        pool_pre_ping=True,
@@ -27,16 +42,7 @@ Session = sessionmaker(bind=engine)
 
 metadata = MetaData()
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s',
-                    datefmt= '%Y-%m-%d %H:%M:%S')
 
-logger = logging.getLogger(__name__)
-logging.info('info')
-logging.debug('debug')
-logging.warning('warning')
-logging.error('error')
-logging.critical("critical")
 
 
 def endpoints_dict() -> dict:
@@ -318,7 +324,8 @@ def etl_pipeline(base_url: str,
                  transform_data=None, 
                  transform_single_func=None, 
                  table: str = None,
-                 max_page: int = None):
+                 max_page: int = None, 
+                 api_token: str = None):
     """
     The main pipeline that combines all the function above.
     1. Connects to the API source using the endpoint_id and brings in the raw data
@@ -367,7 +374,8 @@ def etl_pipeline(base_url: str,
             
             try:
                 logger.debug(f"Requesting page {page} from {endpoint_url}")
-                response = requests.get(endpoint_url, params=parameter)
+                headers = {"X-App-Token": api_token} if api_token else {}
+                response = requests.get(endpoint_url, params=parameter, headers=headers)
                 response.raise_for_status()
                 data = response.json()
 
@@ -434,6 +442,7 @@ if __name__ == '__main__':
     table = "stroke_mortality"
     base_url = 'https://data.cdc.gov/api/v3/views/'
     endpoints = get_endpoint(key_target=table)
+    print(endpoints)
     etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=50000, 
-                 transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=None)
+                 transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=None, api_token=CDC_API_KEY)
     
