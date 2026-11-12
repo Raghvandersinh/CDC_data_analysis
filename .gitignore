@@ -9,3 +9,5 @@ true_number_estimate.csv
 data
 Cdc_Analysis.pbix
 sm_db.duckdb
+stroke_mortality.duckdb
+stroke_mortality.duckdb.wal
