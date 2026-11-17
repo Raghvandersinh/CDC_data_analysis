@@ -19,9 +19,16 @@
             "path": "c:\\Data_Analysis_Projects\\HHS_data_analysis\\analysis\\stroke_mortality_analysis\\sm_db.duckdb",
             "readOnly": true,
             "attached": true
+        },
+        {
+            "alias": "stroke_mortality",
+            "type": "file",
+            "path": "c:\\Data_Analysis_Projects\\HHS_data_analysis\\analysis\\stroke_mortality_analysis\\stroke_mortality.duckdb",
+            "readOnly": true,
+            "attached": true
         }
     ],
-    "duckdb.defaultDatabase": "di_db",
+    "duckdb.defaultDatabase": "sm_db",
     "cSpell.words": [
         "Prediabetics"
     ],
