@@ -34,8 +34,8 @@ CDC_API_KEY = os.getenv("CDC_API_KEY")
 if not CDC_API_KEY:
     logger.warning("CDC_API_KEY not found in environment — SODA v3 requests will likely return 403")
 engine = create_engine(os.getenv('DATABASE_URL'),
-                       pool_size=10,
-                       max_overflow=20,
+                       pool_size=20,
+                       max_overflow=10,
                        pool_pre_ping=True,
                        pool_recycle=3600)
 Session = sessionmaker(bind=engine)
@@ -442,7 +442,7 @@ if __name__ == '__main__':
     table = "stroke_mortality"
     base_url = 'https://data.cdc.gov/api/v3/views/'
     endpoints = get_endpoint(key_target=table)
-    print(endpoints)
+    
     etl_pipeline(base_url=base_url, endpoints=endpoints, pageSize=50000, 
                  transform_data=transform_endpoint_data, transform_single_func=transform_single_stroke_mortality, table=table, max_page=None, api_token=CDC_API_KEY)
-    
+    print(endpoints)

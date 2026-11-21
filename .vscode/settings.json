@@ -25,7 +25,7 @@
             "type": "file",
             "path": "c:\\Data_Analysis_Projects\\HHS_data_analysis\\analysis\\stroke_mortality_analysis\\stroke_mortality.duckdb",
             "readOnly": true,
-            "attached": true
+            "attached": false
         }
     ],
     "duckdb.defaultDatabase": "sm_db",
